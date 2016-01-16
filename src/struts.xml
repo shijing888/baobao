@@ -4,5 +4,6 @@
    <package name="default" extends="struts-default">
      <action name="packageAction" class="packageAction">
      </action>
+     <action name="packageAction_list" class="packageAction" method="packageList"></action>
    </package>
 </struts>    
