@@ -1,0 +1,10 @@
+<root>
+  <facet id="me.spring">
+    <node name="libprov">
+      <attribute name="config-id" value="me.spring_3.1"/>
+      <attribute name="copy-tlds" value="true"/>
+      <attribute name="provider-id" value="me-spring-library-provider"/>
+      <attribute name="version-id" value="none_none"/>
+    </node>
+  </facet>
+</root>

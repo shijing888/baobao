@@ -1,0 +1,17 @@
+#MyEclipse Hibernate Properties
+#Sat Jan 16 15:05:03 CST 2016
+genVersionTag=false
+sessionFactoryName=com.shijing.daoImp.HibernateSessionFactory
+genAnnotations=false
+configFile=/baobao/src/applicationContext.xml
+reStrategyClass=
+sessionFactoryId=sessionFactory
+profile=
+detectM2M=false
+genBasicCompId=false
+keyGenerator=
+createConfigFile=true
+basePersistenceClass=
+detectO2O=false
+useJavaTypes=true
+reSettingsFile=
