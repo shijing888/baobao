@@ -1,0 +1,47 @@
+.pageContent{
+	width: 600px;
+	float: left;
+	border: 1px solid #ccc;
+}
+.leftImage{
+	width:240px;
+	display:block;
+	border-right: 1px solid #ccc;
+}
+.rightContent{
+	float: left;
+	margin-left: 260px;
+	margin-top: -120px;
+}
+.rightContent i a{
+	text-decoration: none;
+	padding-right: 20px;
+}
+<!--addpackage-->
+#addPackage{
+	display: block;
+	width:600px;
+	height:500px;
+	margin-left: 20px;
+}
+.pageContent h3 {
+	color: #33a3dc;
+}
+#addPackage i{
+	display: block;
+	margin-top: 30px;
+	
+}
+#addPackage input{
+	float: right;
+	margin-right: 260px;
+}
+#addPackage #tcSubmit{
+	float: left;
+	margin: 40px 0 0 20px;;
+}
+#addPackage #reset{
+	display:block;
+	margin-right: 20px;
+	margin-top: 40px;
+}
