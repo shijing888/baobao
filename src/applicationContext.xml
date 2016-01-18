@@ -58,7 +58,7 @@
 	
 	 <tx:advice id="aa" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="*" read-only="true" propagation="REQUIRED" />
+			<tx:method name="*" read-only="false" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
 

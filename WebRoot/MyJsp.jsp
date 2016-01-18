@@ -23,6 +23,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+        
+          <form id="addPackage" action="packageAdd" method="get">
+               <div  class="tips">
+                     <h3>请按要求输入所添加套餐的信息</h3>
+               </div>
+                <i>请输入套餐价格：</i><input type="text"/>
+                <i>请输入套餐信息：</i><input type="text"/>
+                 <i>请输入套餐照片URL：</i><input type="text"/>
+                 <input type="submit" value="提交"/>
+                 <input type="reset" value="重置"/>
+          </form>
+
   </body>
 </html>

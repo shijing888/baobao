@@ -9,4 +9,6 @@ public interface PackageDao {
 	//²éÑ¯ËùÓĞÌ×²Í
 	List<TbPackage> packageList();
 
+	String packageAdd(String priceString, String infoString, String photoString);
+
 }

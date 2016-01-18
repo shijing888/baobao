@@ -1,5 +1,14 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+	import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE HTML>
+<html>
 <head>
 <meta charset="utf-8" />
 <title>宝宝起名</title>
@@ -7,7 +16,9 @@
 <!-- basic styles -->
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-
+<link rel="stylesheet" href="<%=path %>/css/admin.css" />
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/admin.js"></script>
 <!--[if IE 7]>
 		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
 		<![endif]-->
@@ -18,7 +29,6 @@
 
 <link rel="stylesheet"
 	href="http://fonts.useso.com/css?family=Open+Sans:400,300" />
-
 <!-- ace styles -->
 
 <link rel="stylesheet" href="assets/css/ace.min.css" />
@@ -51,21 +61,22 @@
 			} catch (e) {
 			}
 		</script>
-
 		<div class="navbar-container" id="navbar-container">
 			<div class="navbar-header pull-left">
-				<ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-							<li><a href="#"> <i class="icon-cog"></i> 设置
-							</a></li>
+				<ul
+					class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+					<li><a href="#"> <i class="icon-cog"></i> 设置
+					</a></li>
 
-							<li><a href="#"> <i class="icon-user"></i> 个人资料
-							</a></li>
+					<li><a href="#"> <i class="icon-user"></i> 个人资料
+					</a></li>
 
-							<li class="divider"></li>
+					<li class="divider"></li>
 
-							<li><a href="#"> <i class="icon-off"></i> 退出
-							</a></li>
-						</ul><a href="#" class="navbar-brand"> <small> <i
+					<li><a href="#"> <i class="icon-off"></i> 退出
+					</a></li>
+				</ul>
+				<a href="#" class="navbar-brand"> <small> <i
 						class="icon-leaf"></i> 宝宝起名系统
 				</small>
 				</a>
@@ -82,9 +93,7 @@
 							src="assets/avatars/user.jpg" alt="Jason's Photo" /> <span
 							class="user-info"> <small>欢迎光临,</small> ADMIN
 						</span> <i class="icon-caret-down"></i>
-					</a>
-
-						</li>
+					</a></li>
 				</ul>
 				<!-- /.ace-nav -->
 			</div>
@@ -136,11 +145,13 @@
 					</a>
 
 						<ul class="submenu">
-							<li><a href="javascript:void(0);" onclick="packageList();" > <i class="icon-double-angle-right"></i>
-									套餐列表
+							<li><a id="tclb" href="javascript:void(0);"
+								onclick="packageList();"> <i
+									class="icon-double-angle-right"></i> 套餐列表
 							</a></li>
 
-							<li><a href="#"> <i class="icon-double-angle-right"></i>
+							<li><a id="addtc" href="javascript:void(0);"
+								onclick="packageAdd();"> <i class="icon-double-angle-right"></i>
 									新加套餐
 							</a></li>
 
@@ -225,7 +236,8 @@
 				<div class="page-content">
 					<div class="page-header">
 						<h1>
-							宝宝起名控制台 <small> <i class="icon-double-angle-right"></i> 查看
+							宝宝起名控制台 <small> <i class="icon-double-angle-right"></i>
+								查看
 							</small>
 						</h1>
 					</div>
@@ -234,6 +246,9 @@
 					<!-- /.row -->
 				</div>
 				<!-- /.page-content -->
+				<div class="pageContent">
+					
+				</div>
 			</div>
 			<!-- /.main-content -->
 

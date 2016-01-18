@@ -1,5 +1,6 @@
 package com.shijing.daoImp;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -34,4 +35,26 @@ public class PackageDaoImp implements PackageDao {
 			return sessionFactory.openSession();
 		}
 	}
+	
+	//Ìí¼ÓÌ×²Í
+	@Override
+	public String packageAdd(String priceString, String infoString,
+			String photoString) {
+		try {
+		   Timestamp time=new Timestamp(System.currentTimeMillis());
+			TbPackage tbPackage=new TbPackage();
+			tbPackage.setOrginalPrice(priceString);
+			tbPackage.setCurrentPrice(priceString);
+			tbPackage.setDetailInfo(infoString);
+			tbPackage.setPictureAddress(photoString);
+			tbPackage.setCreateTime(time);
+			getMySession().save(tbPackage);
+		    return "success";
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "error";
+		}
+	
+	}
+	
 }

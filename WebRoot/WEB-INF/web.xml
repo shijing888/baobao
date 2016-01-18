@@ -17,6 +17,6 @@
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
     <welcome-file-list>
-        <welcome-file>admin.html</welcome-file>
+        <welcome-file>admin.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

@@ -9,4 +9,6 @@ public interface PackageManager {
 	//获取所有套餐
 	List<TbPackage> getPackageList();
 
+	String addPackage(String priceString, String infoString, String photoString);
+
 }

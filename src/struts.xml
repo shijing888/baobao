@@ -5,5 +5,6 @@
      <action name="packageAction" class="packageAction">
      </action>
      <action name="packageAction_list" class="packageAction" method="packageList"></action>
+     <action name="packageAction_add" class="packageAction" method="packageAdd"></action>
    </package>
 </struts>    

@@ -19,5 +19,12 @@ public class PackageManagerImp implements PackageManager {
 		// TODO Auto-generated method stub
 		return baseDao.packageList();
 	}
+
+	@Override
+	public String addPackage(String priceString, String infoString,
+			String photoString) {
+		// TODO Auto-generated method stub
+		return baseDao.packageAdd(priceString,infoString,photoString);
+	}
 	
 }
