@@ -1,6 +1,9 @@
 .pageContent{
 	width: 600px;
 	float: left;
+	
+}
+.wrapContent{
 	border: 1px solid #ccc;
 }
 .leftImage{

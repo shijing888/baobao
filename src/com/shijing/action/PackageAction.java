@@ -20,8 +20,9 @@ public class PackageAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	// 定义response对象
-		private HttpServletResponse response;
+	// 定义request,response对象
+		HttpServletRequest request = null;
+		HttpServletResponse response = null;
 	//packageManager注入
 	private PackageManager packageManager;
 	//保存查询的套餐数据
@@ -62,4 +63,43 @@ public class PackageAction extends ActionSupport {
 		System.out.println(str);
 		response.getWriter().print(str);
 	}
+	
+	// 根据套餐Id查询套餐信息
+		public void packageQueryTC() throws IOException {
+			request = (HttpServletRequest) ActionContext.getContext().get(
+					org.apache.struts2.StrutsStatics.HTTP_REQUEST);
+			response = (HttpServletResponse) ActionContext.getContext().get(
+					org.apache.struts2.StrutsStatics.HTTP_RESPONSE);
+			Integer pcId = Integer.parseInt(request.getParameter("pid"));
+			packageList = packageManager.queryPackage(pcId);
+			JSONArray jsonArray = JSONArray.fromObject(packageList);
+			response.setHeader("content-type", "text/html;charset=utf-8");
+			response.getWriter().print(jsonArray);
+		}
+
+
+	//根据套餐Id删除套餐信息
+	   public void packageDeleteTc() throws IOException{
+		   request = (HttpServletRequest) ActionContext.getContext().get(
+					org.apache.struts2.StrutsStatics.HTTP_REQUEST);
+		   Integer pcId = Integer.parseInt(request.getParameter("id"));
+		   String str=packageManager.deletePackage(pcId);
+			response.setHeader("content-type", "text/html;charset=utf-8");
+			response.getWriter().print(str);
+	   }
+	   
+	   //修改套餐信息
+	   public void packageUpdate() throws IOException{
+		   request = (HttpServletRequest) ActionContext.getContext().get(
+					org.apache.struts2.StrutsStatics.HTTP_REQUEST);
+		   Integer pcId = Integer.parseInt(request.getParameter("pid"));
+		   String priceString=request.getParameter("price");
+		   String currentPriceString=request.getParameter("currentPrice");
+		   String infoString=request.getParameter("info");
+		   String photoUrlString=request.getParameter("photoUrl");
+		   String str=packageManager.updatePacekage(pcId,priceString,currentPriceString,infoString,photoUrlString);
+		   System.out.println(str);
+		   response.setHeader("content-type", "text/html;charset=utf-8");
+		   response.getWriter().print(str);
+	   }
 }

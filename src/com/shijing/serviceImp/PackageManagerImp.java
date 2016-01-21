@@ -27,4 +27,23 @@ public class PackageManagerImp implements PackageManager {
 		return baseDao.packageAdd(priceString,infoString,photoString);
 	}
 	
+	@Override
+	public List<TbPackage> queryPackage(Integer pcId) {
+		// TODO Auto-generated method stub
+		return baseDao.packageQuery(pcId);
+	}
+
+	@Override
+	public String deletePackage(Integer pcId) {
+		// TODO Auto-generated method stub
+		return baseDao.packageDelete(pcId);
+	}
+
+	@Override
+	public String updatePacekage(Integer pcId, String priceString,
+			String currentPriceString, String infoString, String photoUrlString) {
+		// TODO Auto-generated method stub
+		return baseDao.packageUpdate(pcId, priceString,
+				 currentPriceString, infoString, photoUrlString);
+	}
 }

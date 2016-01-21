@@ -16,13 +16,13 @@
 			<value>com.mysql.jdbc.Driver</value>
 		</property>
 		<property name="jdbcUrl">
-			<value>jdbc:mysql://localhost:3306/quick4j</value>
+			<value>jdbc:mysql://localhost:3306/baobao</value>
 		</property>
 		<property name="user">
 			<value>root</value>
 		</property>
 		<property name="password">
-			<value>root</value>
+			<value>mysql</value>
 		</property>
 		<property name="maxPoolSize">
 			<value>80</value>
@@ -78,13 +78,13 @@
 	    <property name="packageManager" ref="packageManager"></property>
 	</bean>
 	
-	<bean id="baseDao2" class="com.shijing.daoImp.UserloginImp">
+	<bean id="baseDao2" class="com.sima.daoImp.UserloginImp">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<bean id="userloginManager" class="com.shijing.serviceImp.UserloginManagerImp">
+	<bean id="userloginManager" class="com.sima.serviceImp.UserloginManagerImp">
 	    <property name="baseDao" ref="baseDao2"></property>
 	</bean>
-	<bean id="userloginAction" class="com.shijing.action.UserloginAction">
+	<bean id="userloginAction" class="com.sima.action.UserloginAction">
 	    <property name="userloginManager" ref="userloginManager"></property>
 	</bean>
 
