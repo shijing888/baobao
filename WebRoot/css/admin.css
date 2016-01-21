@@ -1,15 +1,20 @@
 .pageContent{
 	width: 600px;
+	height:600px;
 	float: left;
 	
 }
-.wrapContent{
-	border: 1px solid #ccc;
-}
+
 .leftImage{
 	width:240px;
+	height:240px;
 	display:block;
 	border-right: 1px solid #ccc;
+}
+.leftImage img{
+	width:220px;
+	height:220px;
+	margin-left: 20px;
 }
 .rightContent{
 	float: left;
@@ -21,13 +26,12 @@
 	padding-right: 20px;
 }
 <!--addpackage-->
+
 #addPackage{
-	display: block;
 	width:600px;
-	height:500px;
-	margin-left: 20px;
+	height:600px;
 }
-.pageContent h3 {
+#addPackage h3 {
 	color: #33a3dc;
 }
 #addPackage i{
@@ -36,15 +40,21 @@
 	
 }
 #addPackage input{
+	width:200px;
+	height:25px;
+	line-height:25px;
 	float: right;
-	margin-right: 260px;
+	margin-right: 230px;
 }
+
 #addPackage #tcSubmit{
 	float: left;
-	margin: 40px 0 0 20px;;
+	margin: 40px 0 0 20px;
+	width: 60px;
 }
 #addPackage #reset{
-	display:block;
-	margin-right: 20px;
+	float: left;
+	margin-left: 120px;
 	margin-top: 40px;
+	width: 60px;
 }

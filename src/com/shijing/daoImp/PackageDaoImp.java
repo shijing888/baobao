@@ -42,6 +42,7 @@ public class PackageDaoImp implements PackageDao {
 	@Override
 	public String packageAdd(String priceString, String infoString,
 			String photoString) {
+
 		try {
 			Timestamp time = new Timestamp(System.currentTimeMillis());
 			TbPackage tbPackage = new TbPackage();
@@ -51,10 +52,11 @@ public class PackageDaoImp implements PackageDao {
 			tbPackage.setPictureAddress(photoString);
 			tbPackage.setCreateTime(time);
 			getMySession().save(tbPackage);
-			return "success";
+
+			return "添加成功！";
 		} catch (Exception e) {
 			// TODO: handle exception
-			return "error";
+			return "添加失败";
 		}
 
 	}
@@ -92,7 +94,7 @@ public class PackageDaoImp implements PackageDao {
 		}
 
 	}
-
+	//String queryString="update TbPackage set orginalPrice=:orginalPrice and currentPrice=:currentPrice and detailInfo=:detailInfo and pictureAddress=:pictureAddress and createTime=:createTime where id=:pid";
 	@Override
 	public String packageUpdate(Integer pcId, String priceString,
 			String currentPriceString, String infoString, String photoUrlString) {

@@ -155,13 +155,7 @@
 									新加套餐
 							</a></li>
 
-							<li><a href="#"> <i class="icon-double-angle-right"></i>
-									修改套餐
-							</a></li>
-
-							<li><a href="#"> <i class="icon-double-angle-right"></i>
-									删除套餐
-							</a></li>
+						
 						</ul></li>
 
 					<li><a href="#" class="dropdown-toggle"> <i

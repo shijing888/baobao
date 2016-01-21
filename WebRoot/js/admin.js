@@ -1,4 +1,14 @@
-//全局变量
+//获取request
+function getRequest(){
+	var request;
+	// 创建request对象
+	if (window.XMLHttpRequest) {
+		request = new XMLHttpRequest;
+	} else {
+		request = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	return request;
+}
 
 //获取套餐
 function packageList() {
@@ -13,7 +23,7 @@ function showPackage() {
 						tcContent += "<div class='wrapContent'>";
 						for (i = 0; i < data.length; i++) {
 							
-							tcContent += "<div class='leftImage'><img src='./"
+							tcContent += "<div class='leftImage'><img src='http://localhost:8080/baobao/images/"
 									+ data[i].pictureAddress
 									+ "'/></div>";
 							tcContent += "<div class='rightContent'>";
@@ -32,6 +42,7 @@ function showPackage() {
 						tcContent += "</div>";
 						$(".pageContent").css({
 							"width" : "600px",
+							"height":"auto",
 							"float" : "left",
 							"border" : "1px solid #ccc"
 						});
@@ -41,26 +52,21 @@ function showPackage() {
 
 // 新加套餐
 function packageAdd() {
-	$("#addtc")
-			.click(
-					function() {
-						var tcContent = "";
-						$(".pageContent").html(tcContent);
-						tcContent += "  <div id='addPackage'>\
-         <div  class='tips'>\
-               <h3>请按要求输入所添加套餐的信息</h3>\
-         </div>\
-          <i>请输入套餐价格：<input id='price' type='text'/></i>\
-          <i>请输入套餐信息：<input id='info' type='text'/></i>\
-           <i>请输入套餐照片URL：<input id='photoUrl' type='text'/></i>\
-           <input id='tcSubmit' type='button' value='添加' onclick='tcSubmit();'/>\
-           <input id='reset' type='reset' value='取消'/>\
-           </div>"
-						$(".pageContent").html(tcContent);
-					});
+	var tcContent = '<iframe src="./admin/addPackage.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>';
+	$(".pageContent").css("height","600px");
+	$(".pageContent").html(tcContent);
+
 }
+
+function tpSubmit(){
+	var photoName=$("#photoUrl").val();
+	document.getElementById("addForm").action="packageAction_add?photoName="+photoName;
+	document.getElementById("addForm").submit();
+		
+}
+
 // 获取套餐中添加功能
-function tcSubmit() {
+function tcSubmit1() {
 	var tcContent = "";
 	var tcprice = $("#price").val();
 	var tcinfo = $("#info").val();
@@ -92,7 +98,7 @@ function tcSubmit() {
 function openwin(id) {
 	var path="./admin/modifyPackage.jsp?"+id;
 	OpenWindow = window.open(path, "_blank",
-			"height=350,width=450,top=300,left=500");
+			"height=350,width=550,top=300,left=500");
 	// OpenWindow.document.write("<TITLE>例子</TITLE>" )
 	OpenWindow.document.close();
 }

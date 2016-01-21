@@ -19,25 +19,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 
 	<link rel="stylesheet" type="text/css" href="<%=path%>/css/admin.css">
-	<script type="text/javascript" src="./js/jquery.js"></script>
-
+    <script type="text/javascript" src="<%=path%>/js/jquery.js"></script>
+    <script type="text/javascript" src="<%=path%>/js/admin.js"></script>
   </head>
   
   <body >
-         <h3>请填写需要修改的套餐信息</h3>
+         <!--  <h3>请填写需要修改的套餐信息</h3>
          <div id='addPackage'>
           <i>请输入原来价格：<input class="modifyInit" id='modifyPrice' type='text'/></i>
           <i>请输入当前价格：<input class="modifyInit" id='modifyCurrentPrice' type='text'/></i>
           <i>请输入套餐信息：<input class="modifyInit"  id='modifyInfo' type='text'/></i>
-           <i>请输入套餐照片URL：<input class="modifyInit" id='modifyPhotoUrl' type='text'/></i>
+           <i>请输入套餐照片：<input class="modifyInit" id='modifyPhotoUrl' type='file'/></i>
            <input id='tcSubmit' type='button' value='修改' onclick='tcSubmit();'/>
            <input id='reset' type='reset' value='取消'/>
-           </div>
+           </div>-->
+    <form id="addForm" method="post" action="" enctype="multipart/form-data">
+		<div id='addPackage'>
+			<div class='tips'>
+				<h3>请填写需要修改的套餐信息</h3>
+			</div>
+			<div class="wrapAdd">
+			    <input class="pid" name="pid" type="text" style="display: none;">
+				<i>请输入原来价格：<input class="modifyInit" id='modifyPrice' name='price' type='text' /></i>
+				<i>请输入当前价格：<input class="modifyInit" id='modifyCurrentPrice' name='currentPrice' type='text' /></i>
+				<i>请输入套餐信息：<input class="modifyInit"  id='modifyInfo'
+					name='info' type='text' /></i> 
+			    <i>请添加套餐照片：<input  class="modifyInit" id='modifyPhotoUrl' name='photoUrl'
+					type='file'/></i> 
+				<input id='tcSubmit' type='button'onclick='tcSubmit()' value='修改' /> 
+				<input id='reset' type='reset' value='取消' />
+			</div>
+		</div>
+	</form>
+           
   </body>
 </html>
 <script>
    $(function(){
-	   var urlstr=document.URL;
+	 var urlstr=document.URL;
   	 var id=urlstr.indexOf("?");
   	 urlstr=urlstr.substr(id+1);
   	 $.post("packageAction_queryTC",{pid:urlstr},function(data,status){
@@ -45,20 +64,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		 $("#modifyCurrentPrice").val(data[0].currentPrice);
   		 $("#modifyInfo").val(data[0].detailInfo);
   		 $("#modifyPhotoUrl").val(data[0].pictureAddress);
-  		 $("#addPackage .modifyInit").css("color","#ccc");
+  		 $(".modifyInit").css("color","#ccc");
   	 },"json");
   	 
   	 $("#tcSubmit").click(function(){
-  		 var price=$("#modifyPrice").val();
-  		 var currentPrice=$("#modifyCurrentPrice").val();
-  		 var info=$("#modifyInfo").val();
-  		 var photoUrl=$("#modifyPhotoUrl").val();
-  		 $.post("packageAction_updatePackage",{pid:urlstr,price:price,currentPrice:currentPrice,info:info,photoUrl:photoUrl},function(data,status){
-  			 if(data=="success")
-  				 alert("修改成功！");
-  			 else
-  				 alert("修改失败！");
-  		 },"text");
+  		var photoName=$("#modifyPhotoUrl").val();alert(photoName+"  "+urlstr)
+  		$(".pid").val(urlstr);
+  		document.getElementById("addForm").action="packageAction_updatePackage?photoName="+photoName;
+  		document.getElementById("addForm").submit();
+  			
   	 });
    });
 
