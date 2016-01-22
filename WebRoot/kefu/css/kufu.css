@@ -1,0 +1,93 @@
+
+.k_bx {
+    background: #8b7d75 none repeat scroll 0 0;
+    border: 1px solid #8b7d75;
+    border-radius: 10px;
+    height: 335px;
+    overflow: visible;
+    position: fixed;
+    right: 0;
+    top: 25%;
+    width: 198px;
+    z-index: 5000;
+}
+.k_ts {
+    color: #ffffff;
+    height: 35px;
+    left: 0;
+    line-height: 42px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+.k_iB {
+    background: #f3f0eb none repeat scroll 0 0;
+    border: 1px solid #f3f0eb;
+    height: 286px;
+    margin: 40px 0 0 8px;
+    width: 181px;
+}
+.k_ls {
+    height: 268px;
+    margin: 12px 0 0 8px;
+    width: 164px;
+}
+.k_ls li {
+    height: 47px;
+    position: relative;
+}
+.k_fl {
+    background: rgba(0, 0, 0, 0) url("../img/k_i01.png") no-repeat scroll 0 0;
+    margin-bottom: 6px;
+}
+#k_las {
+    background: rgba(0, 0, 0, 0) url("../img/k_i02.png") no-repeat scroll -2px 25px;
+    color: #695a51;
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 15px;
+    text-align: center;
+}
+.k_tt {
+    color: #744844;
+    display: block;
+    height: 47px;
+    line-height: 47px;
+    text-align: center;
+}
+#k_Qi {
+    display: block;
+    height: 20px;
+    left: 20px;
+    position: absolute;
+    top: 15px;
+    width: 28px;
+}
+.min_bo {
+    background: rgba(0, 0, 0, 0) url("../img/k_i03.png") no-repeat scroll 0 0;
+    cursor: pointer;
+    display: none;
+    height: 156px;
+    overflow: visible;
+    position: fixed;
+    right: 0;
+    top: 25%;
+    width: 54px;
+    z-index: 5000;
+}
+#close {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    color: #000000;
+    cursor: pointer;
+    display: block;
+    font-size: 10px;
+    height: 14px;
+    line-height: 17px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 15px;
+}

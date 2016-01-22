@@ -1,0 +1,83 @@
+
+.c .c_header {
+    background-color: #a21e2c;
+    border-radius: 8px 8px 0 0;
+    height: 48px;
+}
+.c .c_h3, .c_p {
+    cursor: pointer;
+    float: left;
+    font-size: 22px;
+    font-weight: 600;
+    height: 48px;
+    letter-spacing: 2px;
+}
+.c .c_h3 {
+    color: #fff;
+    line-height: 48px;
+    text-indent: 1.5em;
+    width: 155px;
+}
+.c .c_p {
+    background-color: #eeeeee;
+    border-radius: 8px 0 0;
+    color: #85000e;
+    line-height: 48px;
+    text-align: center;
+    width: 125px;
+}
+.c ul {
+    height: 338px;
+    margin: 0 0 0 15px;
+    overflow-y: scroll;
+}
+.c li {
+    font-size: 15px;
+    line-height: 23px;
+    padding-top: 18px;
+}
+.c span {
+    color: #969696;
+}
+.c div {
+    color: #191919;
+}
+.bo_ts_ui {
+    border-top: 1px solid #b3b3b3;
+    height: 136px;
+    position: relative;
+}
+.bo_ts_ui dl {
+    color: #000;
+    font-size: 15px;
+    margin: 15px 0 0 18px;
+    width: 330px;
+}
+.bo_ts_ui input {
+    border: 1px solid #afafaf;
+    height: 40px;
+    line-height: 40px;
+    width: 215px;
+}
+.bo_ts_ui textarea {
+    border: 1px solid #afafaf;
+    height: 50px;
+    width: 215px;
+}
+#gg {
+    height: 20px;
+}
+.btn {
+    background-color: #eeeeee;
+    border: 1px solid #cfcfcf;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 28px;
+    height: 65px;
+    padding: 18px;
+    position: absolute;
+    right: 25px;
+    text-align: center;
+    top: 15px;
+    width: 60px;
+}

@@ -1,0 +1,77 @@
+
+.conts_box {
+    background: #ffffff none repeat scroll 0 0;
+}
+.conts_ul {
+    margin: auto;
+    width: 1000px;
+}
+.conts_ul li {
+    float: left;
+    height: 540px;
+    width: 500px;
+}
+.box_no1 {
+    background: rgba(0, 0, 0, 0) url("../bbqm_imgs/hehua.jpg") no-repeat scroll 50px 100px;
+}
+.h3_tl {
+    border-bottom: 1px solid #e1dedc;
+    height: 129px;
+    position: relative;
+}
+.h3_dl {
+    bottom: 8px;
+    font-family: Î¢ÈíÑÅºÚ;
+    left: 0;
+    position: absolute;
+}
+.h3_dl dd {
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    width: 82px;
+}
+.no_ddl {
+    background: #837267 none repeat scroll 0 0;
+    color: #ffffff;
+}
+#no_ddl2 {
+    color: #bababa;
+    font-size: 14px;
+    width: 105px;
+}
+.com_conts p {
+    color: #707070;
+    font-family: Î¢ÈíÑÅºÚ;
+    font-size: 15px;
+    line-height: 23px;
+    margin: 8px 0;
+    text-indent: 2em;
+}
+.com_conts1 {
+    color: #707070;
+    font-family: Î¢ÈíÑÅºÚ;
+    font-size: 14px;
+    line-height: 25px;
+}
+.conts_box1 {
+    border-bottom: 1px solid #e1dedc;
+    height: 50px;
+    margin: auto;
+    position: relative;
+    width: 1000px;
+}
+.zhan_shiTb {
+    margin: 15px auto 0;
+    width: 1000px;
+}
+.zhan_shiT {
+    width: 1050px;
+}
+.zhan_shiT li {
+    float: left;
+    height: 154px;
+    margin-right: 23px;
+    width: 233px;
+}

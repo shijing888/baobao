@@ -1,0 +1,144 @@
+
+.layui-layer-iconext {
+    background: rgba(0, 0, 0, 0) url("default/icon-ext.png") no-repeat scroll 0 0;
+}
+html #layui_layer_skinlayerextcss {
+    display: none;
+    position: absolute;
+    width: 1989px;
+}
+.layui-layer-prompt .layui-layer-input {
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1) inset;
+    color: #333;
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 auto;
+    padding: 0 5px;
+    width: 220px;
+}
+.layui-layer-prompt textarea.layui-layer-input {
+    height: 100px;
+    line-height: 20px;
+    width: 300px;
+}
+.layui-layer-tab {
+    box-shadow: 1px 1px 50px rgba(0, 0, 0, 0.4);
+}
+.layui-layer-tab .layui-layer-title {
+    background-color: #eee;
+    border-bottom: 1px solid #ccc;
+    overflow: visible;
+    padding-left: 0;
+}
+.layui-layer-tab .layui-layer-title span {
+    cursor: default;
+    float: left;
+    max-width: 260px;
+    min-width: 80px;
+    overflow: hidden;
+    padding: 0 20px;
+    position: relative;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.layui-layer-tab .layui-layer-title span.layui-layer-tabnow {
+    background-color: #fff;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    height: 36px;
+    z-index: 10;
+}
+.layui-layer-tab .layui-layer-title span:first-child {
+    border-left: medium none;
+}
+.layui-layer-tabmain {
+    clear: both;
+    line-height: 24px;
+}
+.layui-layer-tabmain .layui-layer-tabli {
+    display: none;
+}
+.layui-layer-tabmain .layui-layer-tabli.xubox_tab_layer {
+    display: block;
+}
+.xubox_tabclose {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+.layui-layer-photos {
+    animation-duration: 1s;
+    background: #000 url("default/xubox_loading1.gif") no-repeat scroll center center;
+}
+.layui-layer-photos .layui-layer-content {
+    overflow: hidden;
+    text-align: center;
+}
+.layui-layer-photos .layui-layer-phimg img {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    width: 100%;
+}
+.layui-layer-imguide, .layui-layer-imgbar {
+    display: none;
+}
+.layui-layer-imgprev, .layui-layer-imgnext {
+    height: 44px;
+    margin-top: -22px;
+    outline: 0 none;
+    position: absolute;
+    top: 50%;
+    width: 27px;
+}
+.layui-layer-imgprev {
+    background-position: -5px -5px;
+    left: 10px;
+}
+.layui-layer-imgprev:hover {
+    background-position: -33px -5px;
+}
+.layui-layer-imgnext {
+    background-position: -5px -50px;
+    right: 10px;
+}
+.layui-layer-imgnext:hover {
+    background-position: -33px -50px;
+}
+.layui-layer-imgbar {
+    background-color: rgba(0, 0, 0, 0.8);
+    bottom: 0;
+    color: #fff;
+    font-size: 0;
+    height: 32px;
+    left: 0;
+    line-height: 32px;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.layui-layer-imgtit * {
+    display: inline-block;
+    font-size: 12px;
+    vertical-align: top;
+}
+.layui-layer-imgtit a {
+    color: #fff;
+    max-width: 65%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.layui-layer-imgtit a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+.layui-layer-imgtit em {
+    padding-left: 10px;
+}

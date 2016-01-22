@@ -1,0 +1,43 @@
+
+body, div, p, ul, ol, li, dl, dd, dt, table, select, input, pre, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+img {
+    border: medium none;
+}
+ul, ol {
+    list-style: outside none none;
+}
+a {
+    text-decoration: none;
+}
+.clear::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+.clear {
+    clear: both;
+}
+html, body {
+    font-family: Î¢ÈíÑÅºÚ;
+    font-size: 100%;
+}
+.yijuBox {
+    background: rgba(0, 0, 0, 0) url("../name2.0/bbqm_imgs/headLogo.png") repeat-x scroll 50% 0;
+    height: 132px;
+}
+.cons_box {
+    margin: 25px auto;
+    width: 1000px;
+}
+.cons_box p {
+    font-family: Î¢ÈíÑÅºÚ;
+    font-size: 14px;
+    line-height: 25px;
+    margin-top: 25px;
+    text-indent: 2em;
+}

@@ -1,0 +1,93 @@
+
+body {
+    background: #f8f2e2 none repeat scroll 0 0;
+}
+.login_box {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: #f2f2f2 none repeat scroll 0 0;
+    border-color: -moz-use-text-color #cfcbc8 #cfcbc8;
+    border-image: none;
+    border-radius: 10px 10px 0 0;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    bottom: 0;
+    height: 355px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 467px;
+}
+.login_head {
+    background: #84000e none repeat scroll 0 0;
+    border-radius: 10px 10px 0 0;
+    color: #ffffff;
+    font-family: Î¢ÈíÑÅºÚ;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+}
+.put_box {
+    border: 1px solid #e2e2e2;
+    height: 44px;
+    left: 30px;
+    margin: auto;
+    position: absolute;
+    top: 90px;
+    width: 404px;
+}
+.put_box input {
+    border: medium none;
+    color: #a0a0a0;
+    height: 44px;
+    line-height: 44px;
+    outline: medium none;
+    padding-left: 2px;
+    width: 402px;
+}
+.put_virily {
+    border: 1px solid #e2e2e2;
+    height: 38px;
+    left: 30px;
+    position: absolute;
+    top: 150px;
+    width: 110px;
+}
+.put_virily input {
+    border: medium none;
+    height: 38px;
+    line-height: 38px;
+    outline: medium none;
+    padding-left: 2px;
+    width: 108px;
+}
+.put_virily_img {
+    border: 1px solid #eeeeee;
+    cursor: pointer;
+    height: 38px;
+    left: 150px;
+    position: absolute;
+    top: 150px;
+    width: 110px;
+}
+.put_bnt {
+    height: 52px;
+    left: 135px;
+    position: absolute;
+    top: 240px;
+    width: 202px;
+}
+.put_bnt input {
+    outline: medium none;
+}
+.put_tishi {
+    color: #ff0000;
+    font-family: Î¢ÈíÑÅºÚ;
+    left: 190px;
+    position: absolute;
+    top: 310px;
+}
