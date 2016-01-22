@@ -14,4 +14,8 @@
 		<action name="packageAction_updatePackage" class="packageAction"
 			method="packageUpdate"></action>
 	</package>
+
+	<package name="baobao" extends="struts-default">
+		<action name="showComment" class="baobaoAction" method="showComment"></action>
+	</package>
 </struts>    

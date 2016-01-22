@@ -16,9 +16,6 @@
         <property name="userCom" type="java.lang.String">
             <column name="userCom" length="1000" />
         </property>
-        <property name="ifShow" type="java.lang.String">
-            <column name="ifShow" length="1" />
-        </property>
         <property name="comTime" type="java.sql.Timestamp">
             <column name="comTime" length="0" />
         </property>

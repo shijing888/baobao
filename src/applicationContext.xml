@@ -77,7 +77,7 @@
 	<bean id="packageAction" class="com.shijing.action.PackageAction">
 	    <property name="packageManager" ref="packageManager"></property>
 	</bean>
-	
+	<!--wirtten by sima for userlogin  -->
 	<bean id="baseDao2" class="com.sima.daoImp.UserloginImp">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -88,4 +88,14 @@
 	    <property name="userloginManager" ref="userloginManager"></property>
 	</bean>
 
+     <!-- baobao -->
+     <bean id="baobaoDao" class="com.shijing.daoImp.BaobaoDaoImp">
+         <property name="sessionFactory" ref="sessionFactory"></property>
+     </bean>
+     <bean id="baobaoManager" class="com.shijing.serviceImp.BaobaoManagerImp">
+        <property name="baobaoDao" ref="baobaoDao"></property>
+     </bean>
+    <bean id="baobaoAction" class="com.shijing.action.BaobaoNameAction">
+         <property name="baobaoManager" ref="baobaoManager"></property>
+    </bean>
 </beans>

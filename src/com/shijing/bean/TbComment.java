@@ -13,7 +13,6 @@ public class TbComment implements java.io.Serializable {
 	private Integer id;
 	private String orderId;
 	private String userCom;
-	private String ifShow;
 	private Timestamp comTime;
 
 	// Constructors
@@ -28,14 +27,18 @@ public class TbComment implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public TbComment(String orderId, String userCom, String ifShow,
+	public TbComment(String orderId, String userCom,
 			Timestamp comTime) {
 		this.orderId = orderId;
 		this.userCom = userCom;
-		this.ifShow = ifShow;
 		this.comTime = comTime;
 	}
 
+	public TbComment(String orderId, String userCom) {
+		this.orderId = orderId;
+		this.userCom = userCom;
+	}
+	
 	// Property accessors
 
 	public Integer getId() {
@@ -60,14 +63,6 @@ public class TbComment implements java.io.Serializable {
 
 	public void setUserCom(String userCom) {
 		this.userCom = userCom;
-	}
-
-	public String getIfShow() {
-		return this.ifShow;
-	}
-
-	public void setIfShow(String ifShow) {
-		this.ifShow = ifShow;
 	}
 
 	public Timestamp getComTime() {
