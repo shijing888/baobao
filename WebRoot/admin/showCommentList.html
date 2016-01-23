@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>addPackage.html</title>
+<meta charset="utf-8" />
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/admin.js"></script>
+<script type="text/javascript" src="../js/comment.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/comment.css">
+</head>
+<body onload="findFirst()">
+<div class="commentlist">
+	<table width="100%" border="0" align="center" cellpadding="0"
+		cellspacing="0">
+		<tr>
+			<td height="30"><table width="100%" border="0" cellspacing="0"
+					cellpadding="0">
+					<tr>
+						<td width="15" height="30"><img src="../images/comment/tab_03.gif"
+							width="15" height="30" /></td>
+						<td width="1101" background="../images/comment/tab_05.gif"><span
+							class="STYLE4"></span></td>
+						<td width="281" background="../images/comment/tab_05.gif"><table
+								border="0" align="right" cellpadding="0" cellspacing="0">
+								<tr>
+									<td width="60"><table width="87%" border="0"
+											cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="STYLE1"><div align="center"></div></td>
+											</tr>
+										</table></td>
+
+									<td width="52"><table width="88%" border="0"
+											cellpadding="0" cellspacing="0">
+											<tr>
+												<td class="STYLE1"><div align="center"></div></td>
+											</tr>
+										</table></td>
+								</tr>
+							</table></td>
+						<td width="14"><img src="../images/comment/tab_07.gif" width="14"
+							height="30" /></td>
+					</tr>
+				</table></td>
+		</tr>
+		<tr>
+			<td><table width="100%" border="0" cellspacing="0"
+					cellpadding="0">
+					<tr>
+						<td width="9" background="../images/comment/tab_12.gif">&nbsp;</td>
+						<td bgcolor="#f3ffe3"><table width="99%" border="0"
+								align="center" cellpadding="0" cellspacing="1" bgcolor="#c0de98"
+								id="contable">
+							</table></td>
+						<td width="9" background="../images/comment/tab_16.gif">&nbsp;</td>
+					</tr>
+				</table></td>
+		</tr>
+		<tr>
+			<td height="29"><table width="100%" border="0" cellspacing="0"
+					cellpadding="0">
+					<tr>
+						<td width="15" height="29"><img src="../images/comment/tab_20.gif"
+							width="15" height="29" /></td>
+						<td background="../images/comment/tab_21.gif"><table width="100%"
+								border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td width="25%" height="29" nowrap="nowrap"><span
+										class="STYLE1">共<span id='rid'></span>条纪录，当前第<span
+											id="pid"></span>/<span id="cpid"></span>页， 每页<select id="sid"
+											onchange="refreshPage()"><option value="5" >5</option>
+												<option value="10" selected="selected" >10</option>
+												<option value="15" >15</option>
+										</select>条纪录
+									</span></td>
+									<td width="75%" valign="top" class="STYLE1"><div
+											align="right">
+											<table width="352" height="20" border="0" cellpadding="0"
+												cellspacing="0">
+												<tr>
+													<td width="62" height="22" valign="middle"><div
+															align="right">
+															<input type="image" src="../images/comment/first.gif" width="37"
+																height="15" onclick="findFirst()" />
+														</div></td>
+													<td width="50" height="22" valign="middle"><div
+															align="right">
+															<input type="image" src="../images/comment/back.gif" width="43"
+																height="15" onclick="findBack()" />
+														</div></td>
+													<td width="54" height="22" valign="middle"><div
+															align="right">
+															<input type="image" src="../images/comment/next.gif" width="43"
+																height="15" onclick="findNext()" />
+														</div></td>
+													<td width="49" height="22" valign="middle"><div
+															align="right">
+															<input type="image" src="../images/comment/last.gif" width="37"
+																height="15" onclick="findLast()" />
+														</div></td>
+													<td width="59" height="22" valign="middle"><div
+															align="right">&nbsp</div></td>
+													<td width="25" height="22" valign="middle"></td>
+													<td width="23" height="22" valign="middle">&nbsp</td>
+													<td width="30" height="22" valign="middle"></td>
+												</tr>
+											</table>
+										</div></td>
+								</tr>
+							</table></td>
+						<td width="14"><img src="../images/comment/tab_22.gif" width="14"
+							height="29" /></td>
+					</tr>
+				</table></td>
+		</tr>
+	</table></div>
+</body>
+</html>

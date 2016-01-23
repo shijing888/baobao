@@ -2,6 +2,7 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<package name="default" extends="struts-default">
+		<!-- package -->
 		<action name="packageAction" class="packageAction">
 		</action>
 		<action name="packageAction_list" class="packageAction" method="packageList"></action>
@@ -13,9 +14,22 @@
 			method="packageDeleteTc"></action>
 		<action name="packageAction_updatePackage" class="packageAction"
 			method="packageUpdate"></action>
+
+		<!-- login -->
+		<action name="adminLogin" class="userloginAction" method="userLogin"></action>
+		
+		<!-- comment management -->
+		<action name="commentList" class="commentAction" method="commentList"></action>
+		<action name="commentByPage" class="commentAction" method="commentDisplay"></action>
+		<action name="commentDelete" class="commentAction" method="deleteComment"></action>
+		<action name="commentPass" class="commentAction" method="passComment"></action>
 	</package>
 
 	<package name="baobao" extends="struts-default">
 		<action name="showComment" class="baobaoAction" method="showComment"></action>
+		<action name="addComment" class="baobaoAction" method="addComment">
+			<result name="success">/baobao.html</result>
+			<result name="error">/error.html</result>
+		</action>
 	</package>
 </struts>    

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>用户登录</title>
+<meta http-equiv=content-type content="text/html; charset=utf-8">
+
+<link href="login/xtree.css" type=text/css rel=stylesheet>
+<link href="login/default.css" type=text/css rel=stylesheet>
+<link href="login/user_login.css" type=text/css rel=stylesheet>
+</head>
+<body id=userlogin_body>
+		<div id=user_login>
+			<dl>
+				<dd id=user_top>
+					<ul>
+						<li class=user_top_l></li>
+						<li class=user_top_c></li>
+						<li class=user_top_r></li>
+					</ul>
+				<dd id=user_main>
+					<ul>
+						<li class=user_main_l></li>
+						<li class=user_main_c>
+							<div class=user_main_box>
+								<ul>
+									<li class=user_main_text>用户名：</li>
+									<li class=user_main_input><input class=txtusernamecssclass
+										id=txtusername maxlength=20 name=txtusername></li>
+								</ul>
+								<ul>
+									<li class=user_main_text>密 码：</li>
+									<li class=user_main_input><input class=txtpasswordcssclass
+										id=txtpassword type=password name=txtpassword></li>
+								</ul>
+								<ul>
+									<li class=user_main_text>cookie：</li>
+									<li class=user_main_input><select id=dropexpiration
+										name=dropexpiration>
+											<option value=none selected>不保存</option>
+											<option value=day>保存一天</option>
+											<option value=month>保存一月</option>
+											<option value=year>保存一年</option>
+									</select></li>
+								</ul>
+							</div>
+						</li>
+						<li class=user_main_r><input class=ibtnentercssclass
+							id=ibtnenter
+							style="border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px"
+							onclick="userLogin();" type=image src="./login/user_botton.gif"
+							name=ibtnenter></li>
+					</ul>
+				<dd id=user_bottom>
+					<ul>
+						<li class=user_bottom_l></li>
+						<li class=user_bottom_c></li>
+						<li class=user_bottom_r></li>
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<span id=valrusername style="display: none; color: red"></span><span
+			id=valrpassword style="display: none; color: red"></span><span
+			id=valrvalidatecode style="display: none; color: red"></span>
+		<div id=validationsummary1 style="display: none; color: red"></div>
+
+		<div></div>
+</body>
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script>
+
+	function userLogin() {
+		var username = $("#txtusername").val();
+		var password = $("#txtpassword").val();
+		alert(username)
+		$.post("adminLogin",{username:username,password:password},function(data,status){
+		  window.location.href="./admin.jsp";
+		},"text");
+	}
+</script>
+</html>
+

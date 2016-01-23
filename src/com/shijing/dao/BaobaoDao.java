@@ -10,5 +10,8 @@ public interface BaobaoDao {
 	//获取comment
 	List<TbComment> commentShow();
 
+	//添加评论
+	void commentAdd(String ordersn, String content);
+
 	
 }

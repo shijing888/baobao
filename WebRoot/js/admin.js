@@ -57,7 +57,7 @@ function packageAdd() {
 	$(".pageContent").html(tcContent);
 
 }
-
+//获取套餐中添加功能
 function tpSubmit(){
 	var photoName=$("#photoUrl").val();
 	document.getElementById("addForm").action="packageAction_add?photoName="+photoName;
@@ -113,4 +113,14 @@ function deleteTc(id){
 			 alert("删除失败，请重试！");
 		}
 	},"text");
+}
+
+
+//评论列表
+function commentList(){
+	var tcContent = '<iframe src="./admin/showCommentList.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>';
+	$(".pageContent").css("height","800px");
+	$(".pageContent").css("width","700px");
+	$(".pageContent").html(tcContent);
+	
 }

@@ -68,6 +68,7 @@
 		<aop:advisor advice-ref="aa" pointcut-ref="my" />
 	</aop:config>
  
+    <!-- package -->
 	<bean id="baseDao" class="com.shijing.daoImp.PackageDaoImp">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -77,6 +78,19 @@
 	<bean id="packageAction" class="com.shijing.action.PackageAction">
 	    <property name="packageManager" ref="packageManager"></property>
 	</bean>
+	
+	<!-- comment -->
+	<bean id="commentDao" class="com.shijing.daoImp.CommentDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="commentManager" class="com.shijing.serviceImp.CommentManagerImp">
+		<property name="commentDao" ref="commentDao"></property>
+	</bean>
+	<bean id="commentAction" class="com.shijing.action.CommentAction">
+	    <property name="commentManager" ref="commentManager"></property>
+	</bean>
+	
+	
 	<!--wirtten by sima for userlogin  -->
 	<bean id="baseDao2" class="com.sima.daoImp.UserloginImp">
 		<property name="sessionFactory" ref="sessionFactory"></property>

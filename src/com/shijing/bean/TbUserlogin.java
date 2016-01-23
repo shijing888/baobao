@@ -10,6 +10,10 @@ public class TbUserlogin implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String userName;
 	private String userPwd;

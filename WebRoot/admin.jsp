@@ -188,7 +188,7 @@
 					</a>
 
 						<ul class="submenu">
-							<li><a href="form-elements.html"> <i
+							<li><a href="###" onclick="commentList();"> <i
 									class="icon-double-angle-right"></i> 评论列表
 							</a></li>
 

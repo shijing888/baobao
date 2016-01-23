@@ -13,6 +13,9 @@
         <property name="orderId" type="java.lang.String">
             <column name="orderID" length="50" not-null="true" />
         </property>
+        <property name="ifShow" type="java.lang.Integer">
+            <column name="ifShow" length="1" not-null="true" />
+        </property>
         <property name="userCom" type="java.lang.String">
             <column name="userCom" length="1000" />
         </property>

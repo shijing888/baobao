@@ -16,7 +16,7 @@ var qq = {
 			this.url = url;
 			this.object = $(object);
 			this.object_x = $(object_x);
-			this.object.hide(),this.qlabel(),this.qstyle(),this.qjsapt();
+			this.object.hide(),this.qlabel(),this.qstyle(),this.qjsapt(),this.qimg();
 		},
 		qlabel:function(){
 			$(this.qbody()).append("<div id='qq_quri_div'></div>");	
@@ -42,5 +42,8 @@ var qq = {
 				$(this).hide();
 				$("#qq_quri_div").show();
 			});
+		},
+		qimg:function(){
+			$("#qq_quri_Img").html("<img src='./img/qq-psw_03.png'/>");
 		}
 }

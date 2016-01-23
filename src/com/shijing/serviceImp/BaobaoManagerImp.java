@@ -21,5 +21,11 @@ public class BaobaoManagerImp implements BaobaoManager {
 		return baobaoDao.commentShow();
 	}
 
+	@Override
+	public void submitComment(String ordersn, String content) {
+		// TODO Auto-generated method stub
+		baobaoDao.commentAdd(ordersn,content);
+	}
+
 	
 }

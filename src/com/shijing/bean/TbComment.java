@@ -8,11 +8,16 @@ import java.sql.Timestamp;
 
 public class TbComment implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// Fields
 
 	private Integer id;
 	private String orderId;
 	private String userCom;
+	private Integer ifShow; 
 	private Timestamp comTime;
 
 	// Constructors
@@ -40,7 +45,13 @@ public class TbComment implements java.io.Serializable {
 	}
 	
 	// Property accessors
+	public Integer getIfShow() {
+		return ifShow;
+	}
 
+	public void setIfShow(Integer ifShow) {
+		this.ifShow = ifShow;
+	}
 	public Integer getId() {
 		return this.id;
 	}

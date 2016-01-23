@@ -29,20 +29,38 @@ public class BaobaoNameAction extends ActionSupport {
 		this.baobaoManager = baobaoManager;
 	}
 
+	//显示评论
 	public void showComment() throws IOException{
 //		HttpServletRequest request = (HttpServletRequest) ActionContext
 //				.getContext()
 //				.get(org.apache.struts2.StrutsStatics.HTTP_REQUEST);
-		HttpServletResponse response = (HttpServletResponse) ActionContext
+	    response = (HttpServletResponse) ActionContext
 				.getContext().get(
 						org.apache.struts2.StrutsStatics.HTTP_RESPONSE);
 		
 		List<TbComment> list=null;
-		list=baobaoManager.getComment();System.out.println(list.get(0).getUserCom());
+		list=baobaoManager.getComment();
 		if(list.size()!=0){
 			JSONArray jsonArray = JSONArray.fromObject(list);
 			response.setHeader("content-type", "text/html;charset=utf-8");
 			response.getWriter().print(jsonArray);
 		}
+	}
+	
+	//添加评论
+	public String addComment(){
+	    request = (HttpServletRequest) ActionContext
+				.getContext()
+				.get(org.apache.struts2.StrutsStatics.HTTP_REQUEST);
+		try {
+			String ordersn=request.getParameter("ordersn");
+			String content=request.getParameter("content");
+			baobaoManager.submitComment(ordersn,content);
+			return "success";
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "error";
+		}
+		
 	}
 }

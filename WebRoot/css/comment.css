@@ -1,0 +1,43 @@
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.STYLE1 {font-size: 13px}
+.STYLE4 {
+	font-size: 13px;
+	color: #1F4A65;
+	font-weight: bold;
+}
+
+a:link {
+	font-size: 13px;
+	color: #06482a;
+	text-decoration: none;
+
+}
+a:visited {
+	font-size: 13px;
+	color: #06482a;
+	text-decoration: none;
+}
+a:hover {
+	font-size: 13px;
+	color: #FF0000;
+	text-decoration: underline;
+}
+a:active {
+	font-size: 13px;
+	color: #FF0000;
+	text-decoration: none;
+}
+.STYLE7 {font-size: 13}
+.checkbutton{
+	width: 40px;
+	height: 20px;
+	margin: 1.5px 1.5px;
+	background-color: #F0F8FF;
+}
+
