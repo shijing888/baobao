@@ -188,10 +188,15 @@
 					</a>
 
 						<ul class="submenu">
-							<li><a href="###" onclick="commentList();"> <i
-									class="icon-double-angle-right"></i> 评论列表
+						    <li><a href="###" onclick="commentList(1);"> <i
+									class="icon-double-angle-right"></i> 全部列表
 							</a></li>
-
+							<li><a href="###" onclick="commentList(2);"> <i
+									class="icon-double-angle-right"></i> 已审核列表
+							</a></li>
+                            <li><a href="###" onclick="commentList(3);"> <i
+									class="icon-double-angle-right"></i> 待审核列表
+							</a></li>
 						</ul></li>
 
 				</ul>

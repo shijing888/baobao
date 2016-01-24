@@ -47,8 +47,9 @@ public class CommentAction extends ActionSupport {
 		Integer pageInteger = Integer.parseInt(request.getParameter("page"));
 		Integer sizeInteger = Integer
 				.parseInt(request.getParameter("pagesize"));
+		Integer flag=Integer.parseInt(request.getParameter("flag"));
 		Integer start = (pageInteger - 1) * sizeInteger;
-		List<TbComment> list = commentManager.showComment(start, sizeInteger);
+		List<TbComment> list = commentManager.showComment(start, sizeInteger,flag);
 		Integer integer = commentManager.sumComment();
 		
 		// 将时间戳转换为字符串

@@ -8,9 +8,15 @@ import java.sql.Timestamp;
 
 public class TbOrderdetail implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	// Fields
 
 	private Integer id;
+	
+
 	private String orderId;
 	private String packageId;
 	private String familyName;
@@ -24,7 +30,8 @@ public class TbOrderdetail implements java.io.Serializable {
 	private String optionRemedy;
 	private String orderState;
 	private Timestamp orderTime;
-
+    private String telePhone;
+    private String qq;
 	// Constructors
 
 	/** default constructor */
@@ -62,7 +69,21 @@ public class TbOrderdetail implements java.io.Serializable {
 	}
 
 	// Property accessors
+	public String getTelePhone() {
+		return telePhone;
+	}
 
+	public void setTelePhone(String telePhone) {
+		this.telePhone = telePhone;
+	}
+
+	public String getQq() {
+		return qq;
+	}
+
+	public void setQq(String qq) {
+		this.qq = qq;
+	}
 	public Integer getId() {
 		return this.id;
 	}

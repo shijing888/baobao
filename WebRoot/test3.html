@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>JQuery实例 - 生成年月日</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script type="text/javascript" src="./js/jquery.js"></script>
+        <script type="text/javascript" src="./name2.0/js/calender.js"></script>
+    </head>
+    <body>
+        <div align="center" style="margin-top:200px;">
+            <form name="form1" method="post" action="">
+                <select name="calendar">
+                <option>公历</option>
+                <option>农历</option>
+                </select>
+                <select name="year">
+                </select>
+                <select name="month">
+                </select>
+                <select name="day">
+                </select>
+                <select name="hour">
+                <option value='-1'>生时</option>
+                </select>
+               
+            </form>
+        </div>
+        <script type="text/javascript">
+         $('document').ready(function(){
+    /*
+     * 生成级联菜单
+     */
+    var i=1942;
+    var date = new Date();
+    year = date.getFullYear();//获取当前年份
+    var dropList;
+    for(i=2021;i>1941;i--){
+        if(i == year){
+            dropList = dropList + "<option value='"+i+"' selected>"+i+"年</option>";
+        }else{
+            dropList = dropList + "<option value='"+i+"'>"+i+"年</option>";
+        }
+    }
+    $('select[name=year]').html(dropList);//生成年份下拉菜单
+    var monthly;
+    for(month=1;month<13;month++){
+        monthly = monthly + "<option value='"+month+"'>"+month+"月</option>";
+    }
+    $('select[name=month]').html(monthly);//生成月份下拉菜单
+    var dayly;
+    for(day=1;day<=31;day++){
+        dayly = dayly + "<option value='"+day+"'>"+day+"日</option>";
+    }
+     $('select[name=day]').html(dayly);//生成天数下拉菜单
+    
+    var hourly;
+    for(hour=0;hour<24;hour++){
+       hourly=hourly + "<option value='"+hour+"'>"+hour+"时</option>";
+    }
+    $('select[name=hour]').html(hourly);
+    /*
+     * 处理每个月有多少天---联动
+     */
+    $('select[name=month]').change(function(){
+        var currentDay;
+        var Flag = $('select[name=year]').val();
+        var currentMonth = $('select[name=month]').val();
+        switch(currentMonth){
+            case "1" :
+            case "3" :
+            case "5" :
+            case "7" :
+            case "8" :
+            case "10" :
+            case "12" :total = 31;break;
+            case "4" :
+            case "6" :
+            case "9" :
+            case "11" :total = 30;break;
+            case "2" :
+                if((Flag%4 == 0 && Flag%100 != 0) || Flag%400 == 0){
+                    total = 29;
+                }else{
+                    total = 28;
+                }
+            default:break;
+        }
+        for(day=1;day <= total;day++){
+            currentDay = currentDay + "<option value='"+day+"'>"+day+"日</option>";
+        }
+        
+        $('select[name=day]').html(currentDay);//生成日期下拉菜单
+        })
+})
+        </script>
+    </body>
+</html>

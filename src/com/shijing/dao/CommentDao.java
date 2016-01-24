@@ -8,7 +8,7 @@ import com.shijing.bean.TbComment;
 public interface CommentDao {
 
 	//评论列表
-	List<TbComment> commentList(Integer start, Integer sizeInteger);
+	List<TbComment> commentList(Integer start, Integer sizeInteger, Integer flag);
 
 	//评论总数
 	Integer commentSum();

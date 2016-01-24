@@ -27,9 +27,16 @@ public class CommentDaoImp implements CommentDao {
 	}
 
 	@Override
-	public List<TbComment> commentList(Integer start, Integer sizeInteger) {
+	public List<TbComment> commentList(Integer start, Integer sizeInteger,Integer flag) {
 		// TODO Auto-generated method stub
-		String queryString="from TbComment where ifShow=0 order by comTime desc";
+		String queryString="";
+		if(flag==1)
+			queryString="from TbComment order by comTime desc";
+		else if (flag==2) {
+			queryString="from TbComment where ifShow=1 order by comTime desc";
+		}else {
+			queryString="from TbComment where ifShow=0 order by comTime desc";
+		}
 		Query query=getMySession().createQuery(queryString);
 		query.setFirstResult(start);
 		query.setMaxResults(start+sizeInteger);

@@ -49,5 +49,11 @@
         <property name="orderTime" type="java.sql.Timestamp">
             <column name="orderTime" length="0" />
         </property>
+         <property name="telePhone" type="java.lang.String">
+            <column name="telePhone" length="13" />
+        </property>
+         <property name="qq" type="java.lang.String">
+            <column name="qq" length="20" />
+        </property>
     </class>
 </hibernate-mapping>

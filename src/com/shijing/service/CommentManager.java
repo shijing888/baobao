@@ -7,7 +7,7 @@ import com.shijing.bean.TbComment;
 public interface CommentManager {
 
 	//评论列表
-	List<TbComment> showComment(Integer start, Integer sizeInteger);
+	List<TbComment> showComment(Integer start, Integer sizeInteger, Integer flag);
 
 	//评论总数
 	Integer sumComment();

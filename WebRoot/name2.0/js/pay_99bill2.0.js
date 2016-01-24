@@ -1,0 +1,80 @@
+// JavaScript Document
+/*支付方式选择*/
+$(function(){$(".lt-ins li:gt(23)").hide();$(".yin-qt-1").click(function(){$(".lt-ins li:gt(23)").show();$(this).hide();});});
+$(document).ready(function(){
+	$(".zf-img").each(function(index){
+		$(this).hover(function(){
+			$(this).css("border","1px solid red");						   
+		},function(){
+			$(this).css("border","1px solid #DCDCDC");
+		});					   
+	});	
+/*步骤*/	
+$(function(){
+	$(".step-ups").hover(function(){
+		$(this).css("border-bottom","1px solid #676767");						  
+	},function(){
+		$(this).css("border","none");		
+	});	
+	$(".step-ups").click(function(){
+		window.history.go(-1);							  
+	});
+});
+/*提示*/
+$(function(){
+	$(".not-step").hover(function(){
+		$(".not-st").show();							  
+	},function(){
+		$(".not-st").hide();	
+	});	   
+});
+/*银行卡#0093CC*/
+	$(".yin-l").find("font").each(function(index){
+		$(this).click(function(){
+			if(index == 1){
+				$(".yin-v").hide();
+				$(".yin-v1").show();
+				$(".yin-l").eq(index).find("font").css({"color":"#2F2F2F","font-weight":"bold","font-size":"14px"});
+				$(".yin-l").eq(0).find("font").css({"color":"#0093CC","font-weight":"normal","font-size":"12px"});
+				$(".yin-ka").eq(0).hide();
+				$(".yin-ka").eq(1).show();
+			}else{
+				$(".yin-v").show();
+				$(".yin-v1").hide();
+				$(".yin-l").eq(index).find("font").css({"color":"#2F2F2F","font-weight":"bold","font-size":"14px"});
+				$(".yin-l").eq(1).find("font").css({"color":"#0093CC","font-weight":"normal","font-size":"12px"});
+				$(".yin-ka").eq(0).show();
+				$(".yin-ka").eq(1).hide();
+			}					   
+		});									   
+	});
+/*选择银行卡*/	
+	$(".yinl-ik").each(function(index){
+		$(this).click(function(){
+			$(".yinl-ik").removeClass("action");				   
+			$(this).addClass("action");	
+			if(!$(":radio").eq(index).is(":checked")){
+				$(":radio").eq(index).attr("checked",true);	
+			}
+		});						
+	});
+	$(":radio").each(function(index){
+		$(this).click(function(){
+			$(".yinl-ik").removeClass("action");
+			$(".yinl-ik").eq(index).addClass("action");
+		});						  
+	});
+/*下一步按钮*/	
+	$(".bth-l1").each(function(index){
+		$(this).hover(function(){				   
+			$(this).addClass("bth-active");			   
+		},function(){
+			$(this).removeClass("bth-active");
+		});						   
+	});
+	$(".hui-btn").hover(function(){
+		$(this).addClass("hui-active");						 
+	},function(){
+		$(this).removeClass("hui-active");
+	});
+});

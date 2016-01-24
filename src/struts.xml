@@ -23,6 +23,9 @@
 		<action name="commentByPage" class="commentAction" method="commentDisplay"></action>
 		<action name="commentDelete" class="commentAction" method="deleteComment"></action>
 		<action name="commentPass" class="commentAction" method="passComment"></action>
+		
+		<!-- order -->
+		<action name="submitOrder" class="orderAction" method="submitOrder"></action>
 	</package>
 
 	<package name="baobao" extends="struts-default">

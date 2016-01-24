@@ -90,6 +90,16 @@
 	    <property name="commentManager" ref="commentManager"></property>
 	</bean>
 	
+	<!-- order -->
+	<bean id="orderDao" class="com.shijing.daoImp.OrderDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="orderManager" class="com.shijing.serviceImp.OrderManagerImp">
+		<property name="orderDao" ref="orderDao"></property>
+	</bean>
+	<bean id="orderAction" class="com.shijing.action.OrderAction">
+	    <property name="orderManager" ref="orderManager"></property>
+	</bean>
 	
 	<!--wirtten by sima for userlogin  -->
 	<bean id="baseDao2" class="com.sima.daoImp.UserloginImp">

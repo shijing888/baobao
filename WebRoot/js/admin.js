@@ -117,8 +117,8 @@ function deleteTc(id){
 
 
 //评论列表
-function commentList(){
-	var tcContent = '<iframe src="./admin/showCommentList.html" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>';
+function commentList(val){
+	var tcContent = '<iframe src="./admin/showCommentList.html?val='+val+'" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>';
 	$(".pageContent").css("height","800px");
 	$(".pageContent").css("width","700px");
 	$(".pageContent").html(tcContent);

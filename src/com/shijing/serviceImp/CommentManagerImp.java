@@ -16,8 +16,8 @@ public class CommentManagerImp implements CommentManager {
 	}
 
 	@Override
-	public List<TbComment> showComment(Integer start, Integer sizeInteger) {
-		return commentDao.commentList(start,sizeInteger);
+	public List<TbComment> showComment(Integer start, Integer sizeInteger,Integer flag) {
+		return commentDao.commentList(start,sizeInteger,flag);
 		// TODO Auto-generated method stub
 		
 	}
