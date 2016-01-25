@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="./name2.0/css/layout.css" />
 <link type="text/css" rel="stylesheet"
 	href="./name2.0/kefu/css/kufu.css" />
+
 </head>
 <body>
 
@@ -486,19 +487,15 @@
 					<div class="field">
 						<label for="#" class="field-l">生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</label>
 						<div class="field-c">
-							<form name="form1" method="post" action="">
-								<select name="calendar">
-									<option>公历</option>
-									<option>农历</option>
-								</select> <select name="year">
-								</select> <select name="month">
-								</select> <select name="day">
-								</select> <select name="hour">
-									<option value='-1'>生时</option>
-								</select>
-
-							</form>
-
+							<select  name="calendar">
+								<option>公历</option>
+								<option>农历</option>
+							</select> <select id='year' name="year">
+							</select> <select name="month">
+							</select> <select name="day">
+							</select> <select name="hour">
+								<option value='-1'>生时</option>
+							</select>
 
 						</div>
 					</div>
@@ -606,8 +603,8 @@
 						<label for="qq" class="field-l">&nbsp;</label>
 						<div class="field-c">
 							<span class="msg getAmunt">订单金额：<em>288</em>元
-							</span> <input type="button" class="button submit" value="提交订单"
-								onclick="submitOrders()" />
+							</span> <input type="button" id="submitButton" class="button submit"
+								value="提交订单" />
 						</div>
 					</div>
 
@@ -646,40 +643,15 @@
 	<!-- 联系客服 -->
 	<a href="javascript::" class="min_bo" id="min_bo"></a>
 	<!-- 联系客服 -->
-	<script type="text/javascript" src="./js/jquery.js"></script>
+	<script type="text/javascript" src="./name2.0/js/jquery.js"></script>
 	<script type="text/javascript" src="./name2.0/js/citi.js"></script>
-	<script type="text/javascript" src="./name2.0/js/dashi_qiming.js"></script>
-	<script type="text/javascript" src="./name2.0/js/suan_index_meun.js"></script>
-	<script type="text/javascript" src="./name2.0/js/qq_index_meun.js"></script>
-	<script type="text/javascript" src="./name2.0/js/calender.js"></script>
-	<script type="text/javascript" src="./name2.0/js/baobaoOrder.js"></script>
+    <!--  <script type="text/javascript" src="./name2.0/js/dashi_qiming.js"></script>-->
+	<script defer="defer" type="text/javascript"
+		src="./name2.0/js/baobaoOrder.js"></script>
 
-	<script type="text/javascript">
-		//提交订单
-	
-			$.post("submitOrder", {
-				orderId : orderId,
-				name : name,
-				birthdate : birthdate,
-				gender : gender,
-				qmzishu : qmzishu,
-				birthplace : birthplace,
-				optionRemedy : optionRemedy,
-				forbiddenWord : forbiddenWord,
-				specifyGeneration : specifyGeneration,
-				email : email,
-				telePhone : telePhone,
-				qq : qq,
-				money : money
-			}, function(data, status) {
-				// returnData=data;
-				window.location.href = "./baobaoOrder.jsp";
-			}, "text");
-
-		
-		
-		
-		$('document').ready(
+	<script>
+	var $phpernote=jQuery.noConflict();//自定义一个比较短快捷方式 
+		$phpernote('document').ready(
 		function() {
 			/*
 			 * 生成级联菜单
@@ -698,73 +670,81 @@
 							+ "年</option>";
 				}
 			}
-			$('select[name=year]').html(dropList);//生成年份下拉菜单
+			
+		$phpernote('select[name=year]').html(dropList);//生成年份下拉菜单
 			var monthly;
 			for (month = 1; month < 13; month++) {
-				monthly = monthly + "<option value='"+month+"'>"
-						+ month + "月</option>";
+				monthly = monthly
+						+ "<option value='"+month+"'>" + month
+						+ "月</option>";
 			}
-			$('select[name=month]').html(monthly);//生成月份下拉菜单
+			$phpernote('select[name=month]').html(monthly);//生成月份下拉菜单
 			var dayly;
 			for (day = 1; day <= 31; day++) {
-				dayly = dayly + "<option value='"+day+"'>" + day
-						+ "日</option>";
+				dayly = dayly + "<option value='"+day+"'>"
+						+ day + "日</option>";
 			}
-			$('select[name=day]').html(dayly);//生成天数下拉菜单
+			$phpernote('select[name=day]').html(dayly);//生成天数下拉菜单
 
-		/* 	//var hourly;
-			//for (hour = 0; hour < 24; hour++) {
-				//hourly = hourly + "<option value='"+hour+"'>" + hour
-						//+ "时</option>";
-			//} */
-			//$('select[name=hour]').html(hourly);
-			/*
-			 * 处理每个月有多少天---联动
-			 */
-			$('select[name=month]').change(
-					function() {
-						var currentDay;
-						var Flag = $('select[name=year]').val();
-						var currentMonth = $('select[name=month]')
-								.val();
-						switch (currentMonth) {
-						case "1":
-						case "3":
-						case "5":
-						case "7":
-						case "8":
-						case "10":
-						case "12":
-							total = 31;
-							break;
-						case "4":
-						case "6":
-						case "9":
-						case "11":
-							total = 30;
-							break;
-						case "2":
-							if ((Flag % 4 == 0 && Flag % 100 != 0)
-									|| Flag % 400 == 0) {
-								total = 29;
-							} else {
-								total = 28;
-							}
-						default:
-							break;
+           
+		    var hourly;
+			for (hour = 0; hour < 24; hour++) {
+				hourly = hourly + "<option value='"+hour+"'>"
+						+ hour + "时</option>";
+			}
+			$phpernote('select[name=hour]').html(hourly); 
+/*
+ * 处理每个月有多少天---联动
+ */
+   $phpernote('select[name=month]')
+		.change(
+				function() {
+					var currentDay;
+					var Flag = $phpernote(
+							'select[name=year]')
+							.val();
+					var currentMonth = $phpernote(
+							'select[name=month]')
+							.val();
+					switch (currentMonth) {
+					case "1":
+					case "3":
+					case "5":
+					case "7":
+					case "8":
+					case "10":
+					case "12":
+						total = 31;
+						break;
+					case "4":
+					case "6":
+					case "9":
+					case "11":
+						total = 30;
+						break;
+					case "2":
+						if ((Flag % 4 == 0 && Flag % 100 != 0)
+								|| Flag % 400 == 0) {
+							total = 29;
+						} else {
+							total = 28;
 						}
-						for (day = 1; day <= total; day++) {
-							currentDay = currentDay
-									+ "<option value='"+day+"'>" + day
-									+ "日</option>";
-						}
+					default:
+						break;
+					}
+					for (day = 1; day <= total; day++) {
+						currentDay = currentDay
+								+ "<option value='"+day+"'>"
+								+ day
+								+ "日</option>";
+					}
 
-						$('select[name=day]').html(currentDay);//生成日期下拉菜单
-					})
+					$phpernote('select[name=day]')
+							.html(currentDay);//生成日期下拉菜单
+				})
 		})
 	</script>
-	<script>
-		
-	</script>
+
+
 </body>
 </html>

@@ -69,15 +69,25 @@ public class OrderAction extends ActionSupport {
 		list.add(telePhone);
 		list.add(qq);
 		list.add(money);
-		request.setAttribute("list", list);
-		response.getWriter().print("ss");
+		request.getSession().setAttribute("list", list);
+		
 		
 	//System.out.println(serviceName);	
 	System.out.println(name);	
 	System.out.println(qmzishu);	
-	System.out.println(forbiddenWord);	
+	System.out.println(telePhone);	
+	   
+	}
 	
-		
-		
+	public void submitOrderValue() throws IOException{
+		request = (HttpServletRequest) ActionContext.getContext().get(
+				org.apache.struts2.StrutsStatics.HTTP_REQUEST);
+		response = (HttpServletResponse) ActionContext.getContext().get(
+				org.apache.struts2.StrutsStatics.HTTP_RESPONSE);
+		List<String>list =(List<String>) request.getSession().getAttribute("list");
+		System.out.println(list.get(1));
+		JSONArray jsonArray=JSONArray.fromObject(list);
+		response.setHeader("content-type", "text/html;charset=utf-8");
+		response.getWriter().print(jsonArray);
 	}
 }

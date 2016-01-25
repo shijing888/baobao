@@ -26,6 +26,7 @@
 		
 		<!-- order -->
 		<action name="submitOrder" class="orderAction" method="submitOrder"></action>
+		<action name="submitOrderValue" class="orderAction" method="submitOrderValue"></action>
 	</package>
 
 	<package name="baobao" extends="struts-default">

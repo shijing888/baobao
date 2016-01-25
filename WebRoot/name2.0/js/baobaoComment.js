@@ -16,4 +16,5 @@ $(function(){
 		document.getElementById("addComment").submit();
 		window.location.href="./baobao.html#comment";
 	});
+	
 });
