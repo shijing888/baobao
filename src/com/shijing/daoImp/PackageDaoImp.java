@@ -40,23 +40,23 @@ public class PackageDaoImp implements PackageDao {
 
 	// 添加套餐
 	@Override
-	public String packageAdd(String priceString, String infoString,
-			String photoString) {
+	public String packageAdd(String packageName,String priceString, String priceCurrent,
+			String infoString) {
 
 		try {
 			Timestamp time = new Timestamp(System.currentTimeMillis());
 			TbPackage tbPackage = new TbPackage();
 			tbPackage.setOrginalPrice(priceString);
-			tbPackage.setCurrentPrice(priceString);
+			tbPackage.setCurrentPrice(priceCurrent);
 			tbPackage.setDetailInfo(infoString);
-			tbPackage.setPictureAddress(photoString);
+			tbPackage.setPackageName(packageName);
 			tbPackage.setCreateTime(time);
 			getMySession().save(tbPackage);
 
-			return "添加成功！";
+			return "success";
 		} catch (Exception e) {
 			// TODO: handle exception
-			return "添加失败";
+			return "error";
 		}
 
 	}
@@ -94,23 +94,24 @@ public class PackageDaoImp implements PackageDao {
 		}
 
 	}
-	//String queryString="update TbPackage set orginalPrice=:orginalPrice and currentPrice=:currentPrice and detailInfo=:detailInfo and pictureAddress=:pictureAddress and createTime=:createTime where id=:pid";
 	@Override
 	public String packageUpdate(Integer pcId, String priceString,
-			String currentPriceString, String infoString, String photoUrlString) {
+			String currentPriceString, String infoString, String packageName) {
 		// TODO Auto-generated method stub
 		try {
 			Timestamp timestamp=new Timestamp(System.currentTimeMillis());
-			String queryString = "update TbPackage set orginalPrice="+priceString+" and "+
-			     "currentPrice="+currentPriceString+" and "+ "detailInfo="+infoString+" and "+" pictureAddress="+
-			     photoUrlString+" and "+" createTime="+timestamp+" where id="+pcId;
+//			String queryString = "update TbPackage set orginalPrice="+priceString+" and "+
+//			     "currentPrice="+currentPriceString+" and "+ "detailInfo="+infoString+" and "+"packageName="+
+//			     packageName+" and "+"createTime="+timestamp+" where id="+pcId;
+			String queryString="update TbPackage set orginalPrice=:orginalPrice , currentPrice=:currentPrice , detailInfo=:detailInfo ,packageName=:packageName ,createTime=:createTime where id=:id";
 			Query query=getMySession().createQuery(queryString);
-//			query.setParameter("orginalPrice", priceString);
-//			query.setParameter("currentPrice", currentPriceString);
-//			query.setParameter("detailInfo", infoString);
-//			query.setParameter("pictureAddress", photoUrlString);
-//			query.setParameter("createTime", timestamp);
-//			query.setParameter("pid", pcId);
+			query.setParameter("orginalPrice", priceString);
+			query.setParameter("currentPrice", currentPriceString);
+			query.setParameter("detailInfo", infoString);
+			query.setParameter("packageName", packageName);
+			query.setParameter("createTime", timestamp);
+			query.setParameter("id", pcId);
+			
 			System.out.println(query.getQueryString());
 			query.executeUpdate();
 			return "success";

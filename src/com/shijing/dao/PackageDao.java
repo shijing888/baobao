@@ -10,7 +10,7 @@ public interface PackageDao {
 	List<TbPackage> packageList();
 
 	// Ìí¼ÓÌ×²Í
-	String packageAdd(String priceString, String infoString, String photoString);
+	String packageAdd(String packageName,String priceString, String priceCurrent, String infoString);
 
 	// ²éÑ¯Ì×²Í
 	List<TbPackage> packageQuery(Integer pcId);
@@ -20,5 +20,5 @@ public interface PackageDao {
 
 	// ¸üÐÂÌ×²Í
 	String packageUpdate(Integer pcId, String priceString,
-			String currentPriceString, String infoString, String photoUrlString);
+			String currentPriceString, String infoString, String packageName);
 }

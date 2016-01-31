@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>信息管理系统</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="./packages/scripts/jquery/jquery-1.7.1.js"></script>
+<link href="./packages/style/authority/basic_layout.css" rel="stylesheet" type="text/css">
+<link href="./packages/style/authority/common_style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="./packages/scripts/authority/commonAll.js"></script>
+<script src="./packages/scripts/My97DatePicker/WdatePicker.js" type="text/javascript" defer="defer"></script>
+<script type="text/javascript" src="./packages/scripts/artDialog/artDialog.js?skin=default"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		/*
+		 * 取消
+		 */
+		$("#cancelbutton").click(function() {
+			/**  关闭弹出iframe  **/
+			window.parent.$.fancybox.close();
+		});
+		
+		var result = 'null';
+		if(result =='success'){
+			/**  关闭弹出iframe  **/
+			window.parent.$.fancybox.close();
+		}
+	});
+	
+	/** 提交 新增form  **/
+	function checkPackageSubmit(){
+		// 分别获取套餐信息
+		var tcmc = $("#tcmc").val();
+		var tcyj = $("#tcyj").val();
+		var tcxj = $("#tcxj").val();
+		var xxjs = $("#xxjs").val();	
+		if(tcmc!="" && tcyj!="" && tcxj!="" && xxjs!=""){
+			// 异步提交
+			$.ajax({
+				type:"POST",
+				url:"packageAction_add",
+				data:{"tcmc":tcmc,"tcyj":tcyj, "tcxj":tcxj, "xxjs":xxjs},
+				dataType : "text",
+				success:function(data){
+					if(data=="success")
+					    window.parent.location.href="../admin/packages.html";
+					else
+					    window.parent.location.href="../error.jsp";
+				}
+			});
+		}
+		return true;
+	}
+	
+	/** 提交 修改form  **/
+	function modifyPackageSubmit(id){
+		// 分别获取套餐信息
+		var tcmc = $("#tcmc").val();
+		var tcyj = $("#tcyj").val();
+		var tcxj = $("#tcxj").val();
+		var xxjs = $("#xxjs").val();	
+		if(tcmc!="" && tcyj!="" && tcxj!="" && xxjs!=""){
+			// 异步提交
+			$.ajax({
+				type:"POST",
+				url:"packageAction_updatePackage",
+				data:{"id":id,"tcmc":tcmc,"tcyj":tcyj, "tcxj":tcxj, "xxjs":xxjs},
+				dataType : "text",
+				success:function(data){
+					if(data=="success")
+					    window.parent.location.href="../admin/packages.html";
+					else
+					    window.parent.location.href="../error.jsp";
+				}
+			});
+		}
+		return true;
+	}
+	
+	/** 表单验证  **/
+	function validateForm(){
+		if($("#tcmc").val()==""){
+			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写套餐名称', ok:true,});
+			return false;
+		}
+		if($("#tcyj").val()==""){
+			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写套餐原价', ok:true,});
+			return false;
+		}
+		if($("#tcxj").val()==""){
+			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写套餐现价', ok:true,});
+			return false;
+		}
+		if($("#xxjs").val()==""){
+			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写详细介绍', ok:true,});
+			return false;
+		}
+		return true;
+	}
+</script>
+
+<style >
+   .ui_content .input_text{
+      margin-top: 20px;
+      font-size: 15px;
+      width: 200px;
+      height: 30px;
+      line-height: 30px;
+   }
+   .ui_text_rt{
+      padding-right:15px; 
+   }
+   textarea {
+	margin-top: 20px;
+	width: 200px;
+}
+  .ui_input_btn01{
+    margin-top: 20px;
+}
+</style>
+</head>
+<body>
+<div id="submitForm" name="submitForm" >
+	<input type="hidden" name="fyID" value="14458625716623" id="fyID"/>
+	<div id="container">
+		<div id="nav_links">
+			当前位置：基础数据&nbsp;>&nbsp;<span style="color: #1A5CC6;">套餐编辑</span>
+			<div id="page_close">
+				<a href="javascript:parent.$.fancybox.close();">
+					<img src="./packages/images/common/page_close.png" width="20" height="20" style="vertical-align: text-top;"/>
+				</a>
+			</div>
+		</div>
+		<div class="ui_content">
+			<table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
+				<tr>
+					<td class="ui_text_rt " width="80">套餐名称:</td>
+					<td class="ui_text_lt">
+						<input class="input_text" id="tcmc" type="text"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="ui_text_rt">套餐原价:</td>
+					<td class="ui_text_lt">
+						<input  class="input_text" id="tcyj" type="text"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="ui_text_rt">套餐现价:</td>
+					<td class="ui_text_lt">
+						<input  class="input_text" id="tcxj" type="text"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="ui_text_rt">详细介绍:</td>
+					<td class="ui_text_lt">
+						<textarea id="xxjs" ></textarea>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+					<td class="ui_text_lt">
+						&nbsp;<input id="submitbutton" type="button" value="提交" class="ui_input_btn01"/>
+						&nbsp;<input id="cancelbutton" type="button" value="取消" class="ui_input_btn01"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+<script>
+     $(function(){
+        var urlstr=document.URL;
+  	    var id=urlstr.indexOf("?");
+  	    var data=urlstr.substr(id+1).split("||");
+  	    if(data[0]=="modify"){
+  	       $("#tcmc").val(data[2]);
+  	       $("#tcyj").val(data[3]);
+  	       $("#tcxj").val(data[4]);
+  	       $("#xxjs").val(data[5]);
+  	        $(".input_text,textarea").css("color","#cccc99");
+  	       $(".input_text,textarea").blur(function(){
+  	            $(this).css("color","#cccc99");
+  	        });
+  	       $(".input_text,textarea").focus(function(){
+  	            $(this).css("color","black");
+  	        });
+  	        
+  	        $("#submitbutton").click(function() {
+			if(validateForm()){
+				modifyPackageSubmit(data[1]);
+			}
+  	        });
+  	   }else{
+  	      /*
+		 * 提交
+		 */
+		$("#submitbutton").click(function() {
+			if(validateForm()){
+				checkPackageSubmit();
+			}
+		});
+  	    }
+  	  
+     });
+</script>
+</html>

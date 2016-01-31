@@ -18,7 +18,7 @@ public class TbPackage implements java.io.Serializable {
 	private String orginalPrice;
 	private String currentPrice;
 	private String detailInfo;
-	private String pictureAddress;
+	private String packageName;
 	private Timestamp createTime;
 
 	// Constructors
@@ -35,11 +35,11 @@ public class TbPackage implements java.io.Serializable {
 
 	/** full constructor */
 	public TbPackage(String orginalPrice, String currentPrice,
-			String detailInfo, String pictureAddress, Timestamp createTime) {
+			String detailInfo, String packageName, Timestamp createTime) {
 		this.orginalPrice = orginalPrice;
 		this.currentPrice = currentPrice;
 		this.detailInfo = detailInfo;
-		this.pictureAddress = pictureAddress;
+		this.packageName = packageName;
 		this.createTime = createTime;
 	}
 
@@ -77,12 +77,13 @@ public class TbPackage implements java.io.Serializable {
 		this.detailInfo = detailInfo;
 	}
 
-	public String getPictureAddress() {
-		return this.pictureAddress;
+	
+	public String getPackageName() {
+		return packageName;
 	}
 
-	public void setPictureAddress(String pictureAddress) {
-		this.pictureAddress = pictureAddress;
+	public void setPackageName(String packageName) {
+		this.packageName = packageName;
 	}
 
 	public Timestamp getCreateTime() {

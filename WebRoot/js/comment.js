@@ -105,13 +105,14 @@ function calCount(json) {
 
 function processObj(json) {
 	var contable = document.getElementById("contable");
-	contable.innerHTML = "<tr><td width='6%' height='18' background='images/tab_14.gif'"
+	contable.style.width="900px";
+	contable.innerHTML = "<tr><td width='4%' height='18' background='images/tab_14.gif'"
 			+ "class='STYLE1'><div align='center' class='STYLE2 STYLE1'>序号</div></td>"
-			+ "<td width='12%' height='18' background='../images/comment/tab_14.gif'"
+			+ "<td width='10%' height='18' background='../images/comment/tab_14.gif'"
 			+ "class='STYLE1'><div align='center' class='STYLE2 STYLE1'>订单号</div></td>"
-			+ "<td width='16%' height='18' background='../images/comment/tab_14.gif'"
+			+ "<td width='12%' height='18' background='../images/comment/tab_14.gif'"
 			+ "class='STYLE1'><div align='center' class='STYLE2 STYLE1'>评论时间</div></td>"
-			+ "<td width='7%' height='18' background='../images/comment/tab_14.gif'"
+			+ "<td width='30%' height='18' background='../images/comment/tab_14.gif'"
 			+ "class='STYLE1'><div align='center' class='STYLE2 STYLE1'>内容</div></td>"
 			+ "<td width='10%' height='18' background='../images/comment/tab_14.gif'"
 			+ "class='STYLE1'><div align='center' class='STYLE2'>审核</div></td></tr>";

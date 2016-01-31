@@ -10,7 +10,7 @@ public interface PackageManager {
 	List<TbPackage> getPackageList();
 
 	// Ìí¼ÓÌ×²Í
-	String addPackage(String priceString, String infoString, String photoString);
+	String addPackage(String packageName,String priceString, String priceCurrent, String infoString);
 
 	// ²éÑ¯Ì×²Í
 	List<TbPackage> queryPackage(Integer pcId);
@@ -20,6 +20,6 @@ public interface PackageManager {
 
 	// ¸üÐÂÌ×²Í
 	String updatePacekage(Integer pcId, String priceString,
-			String currentPriceString, String infoString, String photoUrlString);
+			String currentPriceString, String infoString, String packageName);
 
 }

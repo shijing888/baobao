@@ -15,9 +15,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	<script type="text/javascript" src="./js/jquery.js"></script>
   </head>
   
   <body>
     <h3>Sorry,出错鸟~~~</h3>
   </body>
+  <script>
+  
+     setTimeout(function(){
+        window.location.href="./admin.jsp"   
+      },"500");
+  </script>
 </html>

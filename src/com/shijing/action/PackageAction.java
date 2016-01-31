@@ -31,25 +31,6 @@ public class PackageAction extends ActionSupport {
 	// 保存查询的套餐数据
 	private List<TbPackage> packageList;
 
-	private File photoUrl;
-	private String photoName;
-
-	public String getPhotoName() {
-		return photoName;
-	}
-
-	public void setPhotoName(String photoName) {
-		this.photoName = photoName;
-	}
-
-	public File getPhotoUrl() {
-		return photoUrl;
-	}
-
-	public void setPhotoUrl(File photoUrl) {
-		this.photoUrl = photoUrl;
-	}
-
 	public List<TbPackage> getPackageList() {
 		return packageList;
 	}
@@ -82,19 +63,20 @@ public class PackageAction extends ActionSupport {
 		HttpServletResponse response = (HttpServletResponse) ActionContext
 				.getContext().get(
 						org.apache.struts2.StrutsStatics.HTTP_RESPONSE);
-		String priceString = request.getParameter("price");
-		String infoString = request.getParameter("info");
-		String realpath = request.getServletContext().getRealPath("/images");
-		String str = packageManager.addPackage(priceString, infoString,photoName);
+		String packageNameString=request.getParameter("tcmc");
+		String priceOriginalString = request.getParameter("tcyj");
+		String priceCurrentString=request.getParameter("tcxj");
+		String infoString = request.getParameter("xxjs");
+//		String realpath = request.getServletContext().getRealPath("/images");
+		String str = packageManager.addPackage(packageNameString,priceOriginalString,priceCurrentString, infoString);
 
-		System.out.println(realpath);
-		if (photoUrl != null) {
-			File savefile = new File(new File(realpath), photoName);
-			if (!savefile.getParentFile().exists())
-				savefile.getParentFile().mkdirs();
-			FileUtils.copyFile(photoUrl, savefile);
-			ActionContext.getContext().put("message", "文件上传成功");
-		}
+//		if (photoUrl != null) {
+//			File savefile = new File(new File(realpath), photoName);
+//			if (!savefile.getParentFile().exists())
+//				savefile.getParentFile().mkdirs();
+//			FileUtils.copyFile(photoUrl, savefile);
+//			ActionContext.getContext().put("message", "文件上传成功");
+//		}
 		response.setHeader("content-type", "text/html;charset=utf-8");
 		response.getWriter().print(str);
 	}
@@ -126,24 +108,13 @@ public class PackageAction extends ActionSupport {
 	public void packageUpdate() throws IOException {
 		request = (HttpServletRequest) ActionContext.getContext().get(
 				org.apache.struts2.StrutsStatics.HTTP_REQUEST);
-		Integer pcId = Integer.parseInt(request.getParameter("pid"));
-		String priceString = request.getParameter("price");
-		String currentPriceString = request.getParameter("currentPrice");
-		String infoString = request.getParameter("info");
-System.out.println(pcId+"  "+photoName);
+		Integer pcId = Integer.parseInt(request.getParameter("id"));
+		String priceString = request.getParameter("tcyj");
+		String currentPriceString = request.getParameter("tcxj");
+		String infoString = request.getParameter("xxjs");
+		String packageName=request.getParameter("tcmc");
 		String str = packageManager.updatePacekage(pcId, priceString,
-				currentPriceString, infoString, photoName);
-
-		String realpath = request.getServletContext().getRealPath("/images");
-
-		System.out.println(realpath);
-		if (photoUrl != null && photoName!=null)  {
-			File savefile = new File(new File(realpath), photoName);
-			if (!savefile.getParentFile().exists())
-				savefile.getParentFile().mkdirs();
-			FileUtils.copyFile(photoUrl, savefile);
-			ActionContext.getContext().put("message", "文件上传成功");
-		}
+				currentPriceString, infoString, packageName);
 
 		response.setHeader("content-type", "text/html;charset=utf-8");
 		response.getWriter().print(str);

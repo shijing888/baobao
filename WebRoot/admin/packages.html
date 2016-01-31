@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript"
+	src="./packages/scripts/jquery/jquery-1.7.1.js"></script>
+<link href="./packages/style/authority/basic_layout.css"
+	rel="stylesheet" type="text/css">
+<link href="./packages/style/authority/common_style.css"
+	rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../js/admin.js"></script>
+<script type="text/javascript"
+	src="./packages/scripts/authority/commonAll.js"></script>
+<script type="text/javascript"
+	src="./packages/scripts/fancybox/jquery.fancybox-1.3.4.js"></script>
+<script type="text/javascript"
+	src="./packages/scripts/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="./packages/style/authority/jquery.fancybox-1.3.4.css"
+	media="screen"></link>
+<script type="text/javascript"
+	src="./packages/scripts/artDialog/artDialog.js?skin=default"></script>
+<title>信息管理系统</title>
+<script type="text/javascript">
+	$(document).ready(function() {
+		/** 新增   **/
+		$("#addBtn").fancybox({
+			'href' : 'package_edit.html?add',
+			'width' : 733,
+			'height' : 630,
+			'type' : 'iframe',
+			'hideOnOverlayClick' : false,
+			'showCloseButton' : false,
+			'onClosed' : function() {
+				window.location.href = 'packages.html';
+			}
+		});
+
+		/**修改   **/
+		$("a.edit").fancybox({
+			'width' : 733,
+			'height' : 630,
+			'type' : 'iframe',
+			'hideOnOverlayClick' : false,
+			'showCloseButton' : false,
+			'onClosed' : function() {
+				window.location.href = 'packages.html';
+			}
+		});
+	});
+
+	/** 删除 **/
+	function del(packageID) {
+		// 非空判断
+		if (packageID == '')
+			return;
+		if (confirm("您确定要删除吗？")) {
+			$.post("packageAction_deleteTC", {
+				id : packageID
+			}, function(data, status) {
+				if (data == "success") {
+					window.location.href = 'packages.html';
+				} else {
+					alert("删除失败，请重试！");
+					window.location.href = 'packages.html';
+				}
+			}, "text");
+		}
+	}
+
+	/** 批量删除 **/
+	function batchDel() {
+		if ($("input[name='IDCheck']:checked").size() <= 0) {
+			art.dialog({
+				icon : 'error',
+				title : '友情提示',
+				drag : false,
+				resize : false,
+				content : '至少选择一条',
+				ok : true,
+			});
+			return;
+		}
+		
+		var allIDCheck=new Array();
+		var len=0;
+		$("input[name='IDCheck']:checked").each(
+				function(index, domEle) {
+					pid = $(domEle).parent("td").next();
+					allIDCheck[len] = pid.text();
+					len++
+				});
+		if (len > 0) {
+			
+			if (confirm("您确定要批量删除这些记录吗？")) {
+				// 提交form
+				for ( var i = 0; i < len; i++) {
+					$.post("packageAction_deleteTC", {id : allIDCheck[i]
+			    }, function(data, status) {
+				if (data == "success") {
+					window.location.href = 'packages.html';
+				} else {
+					alert("删除失败，请重试！");
+					window.location.href = 'packages.html';
+				}
+			}, "text");
+				}
+			}
+		}
+	}
+</script>
+<style>
+.alt td {
+	background: black !important;
+}
+</style>
+</head>
+<body>
+	<form id="submitForm" name="submitForm" action="" method="post">
+		<div id="container">
+			<div class="ui_content">
+				<div class="ui_text_indent">
+					<div id="box_border">
+						<div id="box_center">
+							<div id="box_bottom">
+								<input type="button" value="新增" class="ui_input_btn01"
+									id="addBtn" /> <input type="button" value="删除"
+									class="ui_input_btn01" onclick="batchDel();" />
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="ui_content">
+				<div class="ui_tb">
+					<table class="table" cellspacing="0" cellpadding="0" width="100%"
+						align="center" border="0">
+						<tr id="title">
+							<th width="30"><input type="checkbox" id="all"
+								onclick="selectOrClearAllCheckbox(this);" /></th>
+							<th>序号</th>
+							<th>套餐名称</th>
+							<th>套餐原价</th>
+							<th>套餐现价</th>
+							<th>详细介绍</th>
+							<th>操作</th>
+						</tr>
+
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</form>
+</body>
+<script>
+	var pdata;
+	$(function() {
+		showPackages();
+	});
+	//鼠标滑过改变背景颜色
+	function changeColor() {
+		// 如果鼠标移到行上时，执行函数
+		$(".table tr").mouseover(function() {
+			$(this).css({
+				background : "#CDDAEB"
+			});
+			$(this).children('td').each(function(index, ele) {
+				$(ele).css({
+					color : "#1D1E21"
+				});
+			});
+		}).mouseout(function() {
+			$(this).css({
+				background : "#FFF"
+			});
+			$(this).children('td').each(function(index, ele) {
+				$(ele).css({
+					color : "#909090"
+				});
+			});
+		});
+	}
+	
+	function packageModify(i){
+		   var str="modify"+"||";
+		   str+=pdata[i].id+"||";
+		   str+=pdata[i].packageName+"||";
+		   str+=pdata[i].orginalPrice+"||";
+		   str+=pdata[i].currentPrice+"||";
+		   str+=pdata[i].detailInfo;
+		   
+		   window.location.href="./package_edit.html?"+str;
+		}
+	
+	function showPackages() {
+		$.post(
+		"packageAction_list",
+		function(data, status) {
+			var packageItems = "";
+			pdata=data;
+			$("table").append(packageItems);
+			for (i = 0; i < data.length; i++) {
+				packageItems += "<tr>";
+				packageItems += '<td><input type="checkbox" name="IDCheck" value="" class="acb" /></td>';
+				packageItems += '<td>' + data[i].id + '</td>';
+				packageItems += '<td>' + data[i].packageName
+						+ '</td>';
+				packageItems += '<td>' + data[i].orginalPrice
+						+ '</td>';
+				packageItems += '<td>' + data[i].currentPrice
+						+ '</td>';
+				packageItems += '<td>' + data[i].detailInfo
+						+ '</td>';
+				packageItems += '<td>';
+				packageItems += '<a href="###" onclick="packageModify('+i+');" class="edit">修改</a>';
+				packageItems += '&nbsp;&nbsp;<a href="javascript:del('
+						+ data[i].id + ');">删除</a>';
+				packageItems += '</td>';
+				packageItems += '</tr>';
+			}
+			//ee.innerHTML(packageItems);
+			//document.getElementById('listFrame').contentWindow.document.getElementById('packageItems').innerHTML(packageItems);
+			$("table").append(packageItems);
+			changeColor();
+			//修改套餐
+			
+		}, "json");
+	}
+</script>
+</html>

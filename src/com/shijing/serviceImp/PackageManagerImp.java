@@ -21,10 +21,10 @@ public class PackageManagerImp implements PackageManager {
 	}
 
 	@Override
-	public String addPackage(String priceString, String infoString,
-			String photoString) {
+	public String addPackage(String packageName,String priceString, String priceCurrent,
+			String infoString) {
 		// TODO Auto-generated method stub
-		return baseDao.packageAdd(priceString,infoString,photoString);
+		return baseDao.packageAdd(packageName,priceString,priceCurrent,infoString);
 	}
 	
 	@Override
@@ -41,9 +41,9 @@ public class PackageManagerImp implements PackageManager {
 
 	@Override
 	public String updatePacekage(Integer pcId, String priceString,
-			String currentPriceString, String infoString, String photoUrlString) {
+			String currentPriceString, String infoString, String packageName) {
 		// TODO Auto-generated method stub
 		return baseDao.packageUpdate(pcId, priceString,
-				 currentPriceString, infoString, photoUrlString);
+				 currentPriceString, infoString, packageName);
 	}
 }

@@ -19,8 +19,8 @@
         <property name="detailInfo" type="java.lang.String">
             <column name="detailInfo" length="500" />
         </property>
-        <property name="pictureAddress" type="java.lang.String">
-            <column name="pictureAddress" length="100" />
+        <property name="packageName" type="java.lang.String">
+            <column name="packageName" length="50" />
         </property>
         <property name="createTime" type="java.sql.Timestamp">
             <column name="createTime" length="0" />
