@@ -306,3 +306,30 @@ img, textarea, input, select, button, fieldset {
     visibility: hidden;
     width: 1px;
 }
+.bitian{
+	color:red;
+}
+#parent{
+	font-size: 14px;
+	
+}
+#prov{
+	width:80px;
+	height:28px;
+	margin-right: 8px;
+	text-align: center;
+	border: 1px solid #a09b95;
+}
+#city{
+	width:80px;
+	height:28px;
+	text-align: center;
+	border: 1px solid #a09b95;
+}
+.birthTime{
+	width:68px;
+	height:28px;
+	margin-right: 8px;
+	text-align: center;
+	border: 1px solid #a09b95;
+}

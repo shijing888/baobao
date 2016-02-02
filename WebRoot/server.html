@@ -414,7 +414,7 @@
 			<div id="form_bnt_to">
 				<fieldset class="cls1">
 					<legend>
-						<span class="i">1</span><span class="c">选择套餐</span>
+						<span class="i">1</span><span class="c">选择套餐<i class="bitian">(*必选)</i></span>
 					</legend>
 					<div class="field">
 						<label for="#" class="field-l">起名套餐01</label>
@@ -477,7 +477,7 @@
 					</legend>
 
 					<div class="field">
-						<label for="name" class="field-l">起名姓氏</label>
+						<label for="name" class="field-l">起名姓氏<i class="bitian">(*必填)</i></label>
 						<div class="field-c">
 							<input type="text" name="tSurname" id="tSurname"
 								class="textfield name" value="" />
@@ -487,13 +487,13 @@
 					<div class="field">
 						<label for="#" class="field-l">生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</label>
 						<div class="field-c">
-							<select  name="calendar">
-								<option>公历</option>
+							<select  name="calendar" class="birthTime">
+								<option selected="selected">公历</option>
 								<option>农历</option>
-							</select> <select id='year' name="year">
-							</select> <select name="month">
-							</select> <select name="day">
-							</select> <select name="hour">
+							</select> <select id='year' name="year"  class="birthTime">
+							</select> <select name="month" class="birthTime">
+							</select> <select name="day" class="birthTime" id="day">
+							</select> <select name="hour" class="birthTime">
 								<option value='-1'>生时</option>
 							</select>
 
@@ -573,7 +573,7 @@
 						<span class="i">4</span><span class="c">联系信息<small>(至少提供邮箱)</small></span>
 					</legend>
 					<div class="field">
-						<label for="email" class="field-l">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</label>
+						<label for="email" class="field-l">邮&nbsp;&nbsp;箱<i class="bitian">(*必填)</i></label>
 						<div class="field-c">
 							<input type="email" name="Email" id="Email"
 								class="textfield email" style="width: 420px;"
@@ -645,7 +645,8 @@
 	<!-- 联系客服 -->
 	<script type="text/javascript" src="./name2.0/js/jquery.js"></script>
 	<script type="text/javascript" src="./name2.0/js/citi.js"></script>
-    <!--  <script type="text/javascript" src="./name2.0/js/dashi_qiming.js"></script>-->
+	<script type="text/javascript" src="./name2.0/js/layer.js"></script>
+    <!--<script type="text/javascript" src="./name2.0/js/baobaoServer.js"></script>-->
 	<script defer="defer" type="text/javascript"
 		src="./name2.0/js/baobaoOrder.js"></script>
 
@@ -669,9 +670,9 @@
 					dropList = dropList + "<option value='"+i+"'>" + i
 							+ "年</option>";
 				}
-			}
-			
+			}		
 		$phpernote('select[name=year]').html(dropList);//生成年份下拉菜单
+			
 			var monthly;
 			for (month = 1; month < 13; month++) {
 				monthly = monthly
@@ -679,8 +680,9 @@
 						+ "月</option>";
 			}
 			$phpernote('select[name=month]').html(monthly);//生成月份下拉菜单
+			
 			var dayly;
-			for (day = 1; day <= 31; day++) {
+		    for (day = 1; day <= 31; day++) {
 				dayly = dayly + "<option value='"+day+"'>"
 						+ day + "日</option>";
 			}
@@ -693,56 +695,76 @@
 						+ hour + "时</option>";
 			}
 			$phpernote('select[name=hour]').html(hourly); 
-/*
+
+       //根据年月获取天数
+       function getDays(currentMonth){
+				var Flag = $phpernote(
+						'select[name=year]')
+						.val();
+				var currentMonth = $phpernote(
+						'select[name=month]')
+						.val();
+				switch (currentMonth) {
+				case "1":
+				case "3":
+				case "5":
+				case "7":
+				case "8":
+				case "10":
+				case "12":
+					total = 31;
+					break;
+				case "4":
+				case "6":
+				case "9":
+				case "11":
+					total = 30;
+					break;
+				case "2":
+					if ((Flag % 4 == 0 && Flag % 100 != 0)
+							|| Flag % 400 == 0) {
+						total = 29;
+					} else {
+						total = 28;
+					}
+				default:
+					break;
+				}
+				return total;
+    }
+    
+ /*
  * 处理每个月有多少天---联动
  */
-   $phpernote('select[name=month]')
-		.change(
-				function() {
-					var currentDay;
-					var Flag = $phpernote(
-							'select[name=year]')
-							.val();
-					var currentMonth = $phpernote(
-							'select[name=month]')
-							.val();
-					switch (currentMonth) {
-					case "1":
-					case "3":
-					case "5":
-					case "7":
-					case "8":
-					case "10":
-					case "12":
-						total = 31;
-						break;
-					case "4":
-					case "6":
-					case "9":
-					case "11":
-						total = 30;
-						break;
-					case "2":
-						if ((Flag % 4 == 0 && Flag % 100 != 0)
-								|| Flag % 400 == 0) {
-							total = 29;
-						} else {
-							total = 28;
-						}
-					default:
-						break;
-					}
-					for (day = 1; day <= total; day++) {
-						currentDay = currentDay
-								+ "<option value='"+day+"'>"
-								+ day
-								+ "日</option>";
-					}
-
-					$phpernote('select[name=day]')
-							.html(currentDay);//生成日期下拉菜单
-				})
-		})
+     $phpernote('select[name=month],select[name=calendar]').change(
+			function() {
+				var currentDay;
+				total=getDays();
+				//根据公农历选择来确定日
+		       if($phpernote('select[name=calendar]').val()=='公历'){
+		           for (day = 1; day <= total; day++) {
+					currentDay = currentDay
+							+ "<option value='"+day+"'>"
+							+ day
+							+ "日</option>";
+				  }
+				  	$phpernote('select[name=day]')
+						.html(currentDay);//生成日期下拉菜单
+		       }else{
+		          var nongliDay=new Array("初一","初二","初三","初四","初五","初六","初七","初八","初九","初十","十一","十二","十三","十四","十五","十六","十七","十八","十九","廿十","廿十一","廿十二","廿十三","廿十四","廿十五","廿十六","廿十七","廿十八","廿十九","三十","三十一");
+		          
+		          var opt= document.getElementById("day").options;
+		          $phpernote('select[name=day]').html("");
+		          for(var i=0;i<total;i++){
+		             var o = document.createElement("option");
+		             o.value=nongliDay[i];
+		             o.text=nongliDay[i];
+		             opt.add(o);
+		          }
+		       }
+				
+			});
+	});
 	</script>
 
 

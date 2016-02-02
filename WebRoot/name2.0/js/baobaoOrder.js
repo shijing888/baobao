@@ -55,25 +55,39 @@ function randomOrder() {
 }
 
 $phpernote(function() {
+	$phpernote("input[name='tSurname']").blur(function(){
+		if(this.value=="")
+			layer.tips("请填写起名姓氏",this);
+	});
+	$phpernote("input[name='Email']").blur(function(){
+		if(this.value=="")
+			layer.tips("请正确填写邮箱",this);
+	});
 	$phpernote("#submitButton").click(function(){
-		$phpernote.post("submitOrder", {
-			orderId : orderId,
-			name : name,
-			birthdate : birthdate,
-			gender : gender,
-			qmzishu : qmzishu,
-			birthplace : birthplace,
-			optionRemedy : optionRemedy,
-			forbiddenWord : forbiddenWord,
-			specifyGeneration : specifyGeneration,
-			email : email,
-			telePhone : telePhone,
-			qq : qq,
-			money : money
-		}, function(data, status) {
-			// returnData=data;
-			window.location.href = "./baobaoOrder.jsp";
-		}, "text");
+    if(validateOrder()){
+			
+	}else{
+			layer.msg("请正确填写信息后再提交！");
+		}
 	});
 });
 
+//验证订单资料
+function validateOrder(){
+	if($phpernote("input[name='price']:checked").val()==""){
+		return false;
+	}
+	if($phpernote("input[name='tSurname']").val()==""){
+		return false;
+	}
+	if($phpernote("input[name='Email']").val()==""){
+		return false;
+	}
+	return true;
+}
+//根据选择的套餐显示金额
+$phpernote(function(){
+	$phpernote("input[name='price']").click(function(){
+		$phpernote(".getAmunt em").text(this.value);
+	});
+});
