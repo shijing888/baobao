@@ -55,8 +55,8 @@
 }
 .bo_ts_ui input {
     border: 1px solid #afafaf;
-    height: 40px;
-    line-height: 40px;
+    height: 30px;
+    line-height: 30px;
     width: 215px;
 }
 .bo_ts_ui textarea {

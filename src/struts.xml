@@ -31,10 +31,12 @@
 	</package>
 
 	<package name="baobao" extends="struts-default">
+	    <!-- 首页评论 -->
 		<action name="showComment" class="baobaoAction" method="showComment"></action>
 		<action name="addComment" class="baobaoAction" method="addComment">
 			<result name="success">/baobao.html</result>
 			<result name="error">/error.html</result>
 		</action>
+		<action name="checkOrderExist" class="baobaoAction" method="checkOrderExist"></action>
 	</package>
 </struts>    

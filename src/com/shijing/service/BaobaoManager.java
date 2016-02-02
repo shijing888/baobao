@@ -12,6 +12,9 @@ public interface BaobaoManager {
 	//添加评论
 	void submitComment(String ordersn, String content);
 
+	//检查是否存在订单
+	String checkOrderId(String oid);
+
 	
 
 }

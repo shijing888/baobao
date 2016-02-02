@@ -13,5 +13,8 @@ public interface BaobaoDao {
 	//添加评论
 	void commentAdd(String ordersn, String content);
 
+	//检查是否存在该订单
+	String isExistOrder(String oid);
+
 	
 }

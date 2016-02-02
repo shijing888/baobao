@@ -51,4 +51,16 @@ public class BaobaoDaoImp implements BaobaoDao {
 		getMySession().save(tbComment);
 	}
 
+	@Override
+	public String isExistOrder(String oid) {
+		// TODO Auto-generated method stub
+		String queryString="from TbOrderdetail where orderId=:orderId and orderState!="+"0";
+		Query query=getMySession().createQuery(queryString);
+		query.setParameter("orderId", oid);
+		if(query.list().size()>0)
+		     return "isExist";
+		else
+			return "notExist";
+	}
+
 }

@@ -27,5 +27,11 @@ public class BaobaoManagerImp implements BaobaoManager {
 		baobaoDao.commentAdd(ordersn,content);
 	}
 
+	@Override
+	public String checkOrderId(String oid) {
+		// TODO Auto-generated method stub
+		return baobaoDao.isExistOrder(oid);
+	}
+
 	
 }

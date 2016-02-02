@@ -63,4 +63,15 @@ public class BaobaoNameAction extends ActionSupport {
 		}
 		
 	}
+	
+	//判断输入的订单号是否存在
+	public void checkOrderExist() throws IOException{
+		request=(HttpServletRequest) ActionContext.getContext().get(org.apache.struts2.StrutsStatics.HTTP_REQUEST);
+		response=(HttpServletResponse) ActionContext.getContext().get(org.apache.struts2.StrutsStatics.HTTP_RESPONSE);
+		
+		String oid=request.getParameter("orderId");
+		String str=baobaoManager.checkOrderId(oid);
+		response.getWriter().print(str);
+		
+	}
 }
