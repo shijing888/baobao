@@ -1,5 +1,7 @@
 package com.sima.daoImp;
 
+import java.sql.Timestamp;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -31,26 +33,37 @@ public class UserloginImp implements UserloginDao {
 		Query query=session.createQuery(queryString);
 		query.setParameter("userName", userName);
 		query.setParameter("userPwd", pwd);
-		if(query.list().size()!=0)
+		if(query.list().size()!=0){
+			Timestamp timestamp=new Timestamp(System.currentTimeMillis());
+			queryString="update TbUserlogin set userLoginTime=:userLoginTime where userName=:userName and userPwd=:userPwd";
+			query=session.createQuery(queryString);
+			query.setParameter("userLoginTime", timestamp);
+			query.setParameter("userName", userName);
+			query.setParameter("userPwd", pwd);
+			query.executeUpdate();
 			return "success";
+		}
 		else 
 			return "error";
 	}
 
 	@Override
-	public String updatePwd(String userName, String oldPwd, String newPwd) {
+	public String pwdModify(String userName, String originPwd, String newPwd) {
 		// TODO Auto-generated method stub
-		String result="0";                         //说明更改不成功
-		if(checkUserNameAndPwd(userName,oldPwd).equals("1")) //说明初始密码正确
-		{
-			String hql="update TbUserlogin set userPwd=:customerpwd where userName=:customername";
-			Query query=getMySession().createQuery(hql);
-			query.setString("customerpwd",newPwd);
-			query.setString("customername",userName);
+		try {
+			String queryString="update TbUserlogin set userPwd=:newPwd where userName=:userName and userPwd=:userPwd ";
+			Session session=sessionFactory.openSession();
+			Query query=session.createQuery(queryString);
+			query.setParameter("newPwd", newPwd);
+			query.setParameter("userName", userName);
+			query.setParameter("userPwd", originPwd);
 			query.executeUpdate();
-			result="1";
+			return "success";
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			return "error";
 		}
-		return result;
 	}
 	
 }

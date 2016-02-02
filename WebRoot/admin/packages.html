@@ -190,8 +190,8 @@
 		   str+=pdata[i].orginalPrice+"||";
 		   str+=pdata[i].currentPrice+"||";
 		   str+=pdata[i].detailInfo;
-		   
-		   window.location.href="./package_edit.html?"+str;
+           //encodeURI避免中文乱码
+		   window.location.href=encodeURI("./package_edit.html?"+str);
 		}
 	
 	function showPackages() {

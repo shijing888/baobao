@@ -18,9 +18,9 @@ public class UserloginManagerImp implements UserloginManager {
 	}
 
 	@Override
-	public String updatePwd(String userName, String oldPwd, String newPwd) {
+	public String modifyPwd(String userName, String originPwd, String newPwd) {
 		// TODO Auto-generated method stub
-		return baseDao.updatePwd(userName, oldPwd, newPwd);
+		return baseDao.pwdModify(userName,originPwd,newPwd);
 	}
 	
 }

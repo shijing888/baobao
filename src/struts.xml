@@ -17,6 +17,7 @@
 
 		<!-- login -->
 		<action name="adminLogin" class="userloginAction" method="userLogin"></action>
+		<action name="userAction_ModifyPwd" class="userloginAction" method="userModifyPwd"></action>
 		
 		<!-- comment management -->
 		<action name="commentList" class="commentAction" method="commentList"></action>

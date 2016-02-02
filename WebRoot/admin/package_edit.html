@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>信息管理系统</title>
+<title>套餐</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script type="text/javascript" src="./packages/scripts/jquery/jquery-1.7.1.js"></script>
 <link href="./packages/style/authority/basic_layout.css" rel="stylesheet" type="text/css">
@@ -17,13 +17,13 @@
 		 */
 		$("#cancelbutton").click(function() {
 			/**  关闭弹出iframe  **/
-			window.parent.$.fancybox.close();
+			window.parent.location.href="../admin.jsp";
 		});
 		
 		var result = 'null';
 		if(result =='success'){
 			/**  关闭弹出iframe  **/
-			window.parent.$.fancybox.close();
+			window.parent.location.href="../admin.jsp";
 		}
 	});
 	
@@ -172,7 +172,7 @@
 </body>
 <script>
      $(function(){
-        var urlstr=document.URL;
+        var urlstr=decodeURI(document.URL);
   	    var id=urlstr.indexOf("?");
   	    var data=urlstr.substr(id+1).split("||");
   	    if(data[0]=="modify"){

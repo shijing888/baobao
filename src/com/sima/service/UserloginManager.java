@@ -2,6 +2,8 @@ package com.sima.service;
 
 public interface UserloginManager {
 
+	//ÓÃ»§µÇÂ¼
 	public String checkUserNameAndPwd(String userName,String pwd);
-	public String updatePwd(String userName, String oldPwd, String newPwd);
+	//ĞŞ¸ÄÃÜÂë
+	public String modifyPwd(String userName, String originPwd, String newPwd);
 }

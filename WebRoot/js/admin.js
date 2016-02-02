@@ -31,6 +31,17 @@ function commentList(val){
 	$(".pageContent").html(tcContent);
 	
 }
+
+//点击显示用户修改密码、退出
 $(function(){
-	$.post("",function(data,status){},"text");
+	$(".light-blue").click(function(){
+		$(".user-menu").toggle();
+	});
 });
+
+//修改密码
+function modifyPwd(){
+	var uname=$("#uname").text();
+	var tcContent = '<iframe src="./admin/admin_edit.html?'+uname+'" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>';
+	$(".pageContent").html(tcContent);
+}

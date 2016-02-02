@@ -16,9 +16,13 @@
 <!-- basic styles -->
 <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
-<link rel="stylesheet" href="<%=path %>/css/admin.css" />
+<link rel="stylesheet" href="<%=path%>/css/admin.css" />
+<link id="bs-css" href="./css/bootstrap-cerulean.min.css"
+	rel="stylesheet" />
+<link href="./css/charisma-app.css" rel="stylesheet" />
 <script type="text/javascript" src="./js/jquery.js"></script>
 <script type="text/javascript" src="./js/admin.js"></script>
+
 <!--[if IE 7]>
 		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
 		<![endif]-->
@@ -65,18 +69,18 @@
 			<div class="navbar-header pull-left">
 				<ul
 					class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-					<li><a href="#"> <i class="icon-cog"></i> 设置
-					</a></li>
 
-					<li><a href="#"> <i class="icon-user"></i> 个人资料
+					<li><a href="#" onclick="modifyPwd()"> <i
+							class="icon-user"></i> 修改密码
 					</a></li>
 
 					<li class="divider"></li>
 
-					<li><a href="#"> <i class="icon-off"></i> 退出
+					<li><a href="#" onclick="logout()"> <i class="icon-off"></i>
+							退出
 					</a></li>
 				</ul>
-				<a href="#" class="navbar-brand"> <small> <i
+				<a href="#" class="navbar-brand" style="width:200px;"> <small> <i
 						class="icon-leaf"></i> 宝宝起名系统
 				</small>
 				</a>
@@ -91,7 +95,9 @@
 					<li class="light-blue"><a data-toggle="dropdown" href="#"
 						class="dropdown-toggle"> <img class="nav-user-photo"
 							src="assets/avatars/user.jpg" alt="Jason's Photo" /> <span
-							class="user-info"> <small>欢迎光临,</small><i id="uname"> ADMIN</i>
+							class="user-info"> <small>欢迎光临,</small><i id="uname">
+									ADMIN</i> <input id="hiddenUname" type="text"
+								/ style="display: none;">
 						</span> <i class="icon-caret-down"></i>
 					</a></li>
 				</ul>
@@ -146,8 +152,8 @@
 
 						<ul class="submenu">
 							<li><a id="tclb" href="javascript:void(0);"
-								onclick="packageList();"> <i
-									class="icon-double-angle-right"></i> 套餐列表
+								onclick="packageList();"> <i class="icon-double-angle-right"></i>
+									套餐列表
 							</a></li>
 
 							<li><a id="addtc" href="javascript:void(0);"
@@ -155,7 +161,7 @@
 									新加套餐
 							</a></li>
 
-						
+
 						</ul></li>
 
 					<li><a href="#" class="dropdown-toggle"> <i
@@ -188,13 +194,13 @@
 					</a>
 
 						<ul class="submenu">
-						    <li><a href="###" onclick="commentList(1);"> <i
+							<li><a href="###" onclick="commentList(1);"> <i
 									class="icon-double-angle-right"></i> 全部列表
 							</a></li>
 							<li><a href="###" onclick="commentList(2);"> <i
 									class="icon-double-angle-right"></i> 已审核列表
 							</a></li>
-                            <li><a href="###" onclick="commentList(3);"> <i
+							<li><a href="###" onclick="commentList(3);"> <i
 									class="icon-double-angle-right"></i> 待审核列表
 							</a></li>
 						</ul></li>
@@ -239,6 +245,31 @@
 								查看
 							</small>
 						</h1>
+
+						<!-- 新增提醒 -->
+
+						<div class=" newAddrow">
+
+							<div class="col-md-3 col-sm-3 col-xs-6">
+								<a title="$34 new sales."
+									class="well top-block" href="#"> <i
+									class="glyphicon yellow"><img src='./images/icon/order.png'/></i>
+
+									<div>新增订单</div>
+									 <span class="notification yellow">34</span>
+								</a>
+							</div>
+
+							<div class="col-md-3 col-sm-3 col-xs-6">
+								<a  title="12 new messages."
+									class="well top-block" href="#"> <i
+									class="glyphicon  red"><img src='./images/icon/comment.png'/></i>
+
+									<div>新增评论</div>
+									<span class="notification red">12</span>
+								</a>
+							</div>
+						</div>
 					</div>
 					<!-- /.page-header -->
 
@@ -246,7 +277,7 @@
 				</div>
 				<!-- /.page-content -->
 				<div class="pageContent">
-                     <!-- 右部分内容 -->
+					<!-- 右部分内容 -->
 				</div>
 			</div>
 			<!-- /.main-content -->
@@ -317,18 +348,34 @@
 	<!-- inline scripts related to this page -->
 
 </body>
-<script >
+<script>
   $(function(){
 	  var user='<%=session.getAttribute("userName")%>';
-	  if(user=='null')
-		{
-		  alert("请先登录！");
-		  window.location.href="./login.html";
-		}
-	  else{
-		  $("#uname").text(user);
-	  }
-  });
+      //获取cookie
+      <%
+        String nameVlue="null";
+        Cookie[] cookies=request.getCookies();
+        for(Cookie cookie:cookies){
+        	String cookieName=cookie.getName();
+        	if("userName".equals(cookieName)){
+        		nameVlue=cookie.getValue();
+        	}
+        }
+      %>
+      var nameValue='<%=nameVlue%>';
+	  if (user == 'null' && nameValue=='null')
+			window.location.href = "./login.html";
+		else
+			$("#uname").text(nameValue);
+
+	});
+	//设置登录时间长为2小时
+	setTimeout(logout, 2 * 60 * 60 * 1000);
+	//用户退出
+	function logout() {
+        <%session.invalidate();%>
+		window.location.href = "./login.html";
+	}
 </script>
 </html>
 
