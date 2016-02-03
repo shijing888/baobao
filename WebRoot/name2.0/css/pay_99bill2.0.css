@@ -73,8 +73,11 @@ body {
     margin-bottom: 18px;
 }
 .info-p span {
-    color: #000000;
+    color: #7a7a7a;
     font-size: 16px;
+}
+.info-p .tcmc{
+	color: #000000;
 }
 .info-m {
     color: #7a7a7a;

@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
+Source Server         : shijing
 Source Server Version : 50612
 Source Host           : localhost:3306
 Source Database       : baobao
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50612
 File Encoding         : 65001
 
-Date: 2016-01-25 10:37:40
+Date: 2016-02-03 10:46:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,7 +26,7 @@ CREATE TABLE `tb_comment` (
   `comTime` timestamp NULL DEFAULT NULL,
   `ifShow` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='用户对订单进行评论，功能要求带审核（审核通过方可显示），默认按时间顺序进行';
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='用户对订单进行评论，功能要求带审核（审核通过方可显示），默认按时间顺序进行';
 
 -- ----------------------------
 -- Records of tb_comment
@@ -44,6 +44,7 @@ INSERT INTO `tb_comment` VALUES ('11', '123456792', '人人都说江南好', '20
 INSERT INTO `tb_comment` VALUES ('12', '1234567894', '风景旧曾谙', '2016-01-23 21:18:49', '1');
 INSERT INTO `tb_comment` VALUES ('13', '1234567895', '日出江花红胜火', '2016-01-23 21:19:31', '1');
 INSERT INTO `tb_comment` VALUES ('14', '1234567896', 'jhlkhlk', '2016-01-24 21:09:47', '0');
+INSERT INTO `tb_comment` VALUES ('25', '123456789098765432', '一颗赛艇~', '2016-02-02 19:07:45', '1');
 
 -- ----------------------------
 -- Table structure for `tb_orderdetail`
@@ -54,8 +55,8 @@ CREATE TABLE `tb_orderdetail` (
   `orderID` varchar(50) NOT NULL,
   `packageID` varchar(50) DEFAULT NULL,
   `familyName` varchar(20) NOT NULL,
-  `gender` varchar(1) NOT NULL,
-  `wordCount` varchar(1) NOT NULL,
+  `gender` varchar(1) NOT NULL DEFAULT '1',
+  `wordCount` varchar(1) NOT NULL DEFAULT '2',
   `birthDay` varchar(20) NOT NULL,
   `mailInfo` varchar(50) DEFAULT NULL,
   `forbiddenWord` varchar(50) DEFAULT NULL,
@@ -68,11 +69,12 @@ CREATE TABLE `tb_orderdetail` (
   `qq` varchar(20) DEFAULT NULL,
   `money` double(8,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_orderdetail
 -- ----------------------------
+INSERT INTO `tb_orderdetail` VALUES ('1', '123456789098765432', '2', '张', '1', '2', '11111111', null, null, null, null, null, '1', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `tb_package`
@@ -83,18 +85,17 @@ CREATE TABLE `tb_package` (
   `orginalPrice` varchar(10) NOT NULL,
   `currentPrice` varchar(10) NOT NULL,
   `detailInfo` varchar(500) DEFAULT NULL,
-  `pictureAddress` varchar(100) DEFAULT NULL,
+  `packageName` varchar(50) DEFAULT NULL,
   `createTime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_package
 -- ----------------------------
-INSERT INTO `tb_package` VALUES ('2', '1888', '1688', '666', 'bao1.jpg', '2016-01-12 16:44:27');
-INSERT INTO `tb_package` VALUES ('8', '667', '667', '667', 'baobaotc.jpg', '2016-01-17 21:33:49');
-INSERT INTO `tb_package` VALUES ('18', '35', '35', '35', 'baobaotc.jpg', '2016-01-19 20:55:13');
-INSERT INTO `tb_package` VALUES ('92', '78', '78', '8787', 'bao1.jpg', '2016-01-22 22:42:07');
+INSERT INTO `tb_package` VALUES ('2', '388', '288', '666', '大运经典起名', '2016-01-12 16:44:27');
+INSERT INTO `tb_package` VALUES ('8', '1080', '880', '667', '成长鸿名+命理简析套餐', '2016-01-17 21:33:49');
+INSERT INTO `tb_package` VALUES ('18', '1980', '1580', '35', '至尊鸿名+命理详解套餐', '2016-01-19 20:55:13');
 
 -- ----------------------------
 -- Table structure for `tb_userlogin`
@@ -111,4 +112,4 @@ CREATE TABLE `tb_userlogin` (
 -- ----------------------------
 -- Records of tb_userlogin
 -- ----------------------------
-INSERT INTO `tb_userlogin` VALUES ('1', 'admin', 'admin', null);
+INSERT INTO `tb_userlogin` VALUES ('1', 'admin', 'admin', '2016-02-02 19:08:30');

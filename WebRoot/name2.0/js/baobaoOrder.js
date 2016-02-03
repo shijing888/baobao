@@ -1,93 +1,74 @@
-////获取数据
-var $phpernotephpernote=jQuery.noConflict();//自定义一个比较短快捷方式 
-var name = $phpernote("#tSurname").val();
-var money = $phpernote("input[name='price']:checked").val();
-var birthdate;
-var birthplace;
-//var birthdate = "公历2016年正月初一";
-var gender ;
-var qmzishu = $phpernote("input[name='tNameSums']:checked").val();
-var optionRemedy = $phpernote("[name='tZiBeiStr1']").val();
-var forbiddenWord = $phpernote("[name='tJiHuiTXT']").val();
-var specifyGeneration = $phpernote("[name='content']").val();
-var email = $phpernote("[name='Email']").val();
-var telePhone = $phpernote("[name='shouji']").val();
-var qq = $phpernote("[name='QQ']").val();
-var orderId = randomOrder();
-$phpernote(function(){
-	birthdate=getBirth();
-	birthplace = $phpernote("#prov  option:selected").text() + " "
-	+ $phpernote("#city  option:selected").text();
-	gender=getGender();
+$(function(){
+	//获取订单资料
+	var url=decodeURI(document.URL);
+	var id=url.indexOf("?");
+	var order=url.substr(id+1).split("||");
+	showOrderValue(order);
 });
 
-//获取性别
-function getGender(){
-	var gg=$phpernote("input[name='tSex']:checked").val();
-	if(gg=='0')
-		gender='女';
-	else(gg=='1')
-	gender="男";
+// 显示订单信息
+function showOrderValue(order) {
+	var xdsj = CurentTime();
+	$(".dingdan").text(order[0]);
+	$(".tcmc").text(order[1]);
+	$(".money").text(order[2]);
+	$(".xingshi").text(order[3]);
+	$(".csrq").text(order[4]);
+	$(".csd").text(order[5]);
+	$(".gender").text(order[6]);
+	$(".qmzs").text(order[7]);
+	if(order[8]=="*##*")
+		$(".zdzb").text("");
+	else
+		$(".zdzb").text(order[8]);
 	
-	return gender;
-}
-// 获取生日
-function getBirth() {
-	var bir = "";
-	bir += $phpernote("[name='calendar']").val() + "  ";
-	bir += $phpernote("[name='year']").val() + "年  ";
-	bir += $phpernote("[name='month']").val() + "月 ";
-	bir += $phpernote("[name='day']").val() + "日 ";
-	bir += $phpernote("[name='hour']").val() + "时 ";
-	return bir;
-}
-
-// 随机生成订单号
-function randomOrder() {
-	code = "MDS";
-	var codeLength = 15;
-	var codeArray = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-	for ( var i = 0; i < codeLength; i++) {
-		index = Math.floor(Math.random() * 10);
-		code += codeArray[index];
-	}
-	return code;
+	if(order[9]=="*##*")
+		$(".jjyz").text("");
+	else
+		$(".jjyz").text(order[9]);
+	
+	if(order[10]=="*##*")
+		$(".xxsm").text("");
+	else
+		$(".xxsm").text(order[10]);
+	$(".email").text(order[11]);
+	$(".gmsj").text(xdsj);
+	
 }
 
-$phpernote(function() {
-	$phpernote("input[name='tSurname']").blur(function(){
-		if(this.value=="")
-			layer.tips("请填写起名姓氏",this);
-	});
-	$phpernote("input[name='Email']").blur(function(){
-		if(this.value=="")
-			layer.tips("请正确填写邮箱",this);
-	});
-	$phpernote("#submitButton").click(function(){
-    if(validateOrder()){
-			
-	}else{
-			layer.msg("请正确填写信息后再提交！");
-		}
-	});
-});
+// 获取当前时间
+function CurentTime() {
+	var now = new Date();
 
-//验证订单资料
-function validateOrder(){
-	if($phpernote("input[name='price']:checked").val()==""){
-		return false;
-	}
-	if($phpernote("input[name='tSurname']").val()==""){
-		return false;
-	}
-	if($phpernote("input[name='Email']").val()==""){
-		return false;
-	}
-	return true;
+	var year = now.getFullYear(); // 年
+	var month = now.getMonth() + 1; // 月
+	var day = now.getDate(); // 日
+
+	var hh = now.getHours(); // 时
+	var mm = now.getMinutes(); // 分
+	var ss = now.getSeconds(); // 秒
+
+	var clock = year + "-";
+
+	if (month < 10)
+		clock += "0";
+	clock += month + "-";
+
+	if (day < 10)
+		clock += "0";
+	clock += day + " ";
+
+	if (hh < 10)
+		clock += "0";
+	clock += hh + ":";
+
+	if (mm < 10)
+		clock += '0';
+	clock += mm + ":";
+
+	if (ss < 10)
+		clock += '0';
+	clock += ss;
+
+	return (clock);
 }
-//根据选择的套餐显示金额
-$phpernote(function(){
-	$phpernote("input[name='price']").click(function(){
-		$phpernote(".getAmunt em").text(this.value);
-	});
-});

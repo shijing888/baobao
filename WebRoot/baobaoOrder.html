@@ -7,9 +7,10 @@
 <link type="text/css" rel="stylesheet" href="./name2.0/css/pay_99bill2.0.css"/>
 <link rel="stylesheet" type="text/css" href="./name2.0/css/layout.css"/>
 <script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./name2.0/js/baobaoOrder.js"></script>
 <script type="text/javascript" src="./js/pay_99bill2.0.js"></script>
 </head>
-<body onload="showOrderValue();">
+<body >
 <!--顶部start-->	
 <!--  head start -->
 <header class="s-header">
@@ -54,6 +55,7 @@
 			<p class="info-r">出 生 &nbsp;地 ：<span class="csd"></span></p>
 			<p class="info-r">禁忌用字 ：<span class="jjyz"></span></p>
 			<p class="info-r">指定字辈 ：<span class="zdzb"></span></p>
+			<p class="info-r">其他 ：<span class="xxsm"></span></p>
 		</div>
 	</div>
 </div>
@@ -196,61 +198,6 @@
   ga('set', 'dimension2', '收银台');
   ga('send', 'pageview');
 </script>
-<script>
-   // 显示订单信息
-function showOrderValue() {
-	alert("aa")
-	var xdsj = CurentTime();
-	$(".tcmc").text("${list.name}");
-	$(".dingdan").text(orderId);
-	$(".email").text(email);
-	$(".gmsj").text(xdsj);
-	$(".money").text(money);
-	$(".xingshi").text(name);
-	$(".gender").text(gender);
-	$(".qmzs").text(qmzishu);
-	$(".csrq").text(birthdate);
-	$(".csd").text(birthplace);
-	$(".jjyz").text(forbiddenWord);
-	$(".zdzb").text(specifyGeneration);
-}
 
-// 获取当前时间
-function CurentTime() {
-	var now = new Date();
-
-	var year = now.getFullYear(); // 年
-	var month = now.getMonth() + 1; // 月
-	var day = now.getDate(); // 日
-
-	var hh = now.getHours(); // 时
-	var mm = now.getMinutes(); // 分
-	var ss = now.getSeconds(); // 秒
-
-	var clock = year + "-";
-
-	if (month < 10)
-		clock += "0";
-	clock += month + "-";
-
-	if (day < 10)
-		clock += "0";
-	clock += day + " ";
-
-	if (hh < 10)
-		clock += "0";
-	clock += hh + ":";
-
-	if (mm < 10)
-		clock += '0';
-	clock += mm + ":";
-
-	if (ss < 10)
-		clock += '0';
-	clock += ss;
-
-	return (clock);
-}
-</script>
 </body>
 </html>
