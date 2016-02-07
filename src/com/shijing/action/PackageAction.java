@@ -1,13 +1,10 @@
 package com.shijing.action;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.io.FileUtils;
 
 import net.sf.json.JSONArray;
 
@@ -57,10 +54,10 @@ public class PackageAction extends ActionSupport {
 
 	// Ìí¼ÓÌ×²Í
 	public void packageAdd() throws IOException {
-		HttpServletRequest request = (HttpServletRequest) ActionContext
+		request = (HttpServletRequest) ActionContext
 				.getContext()
 				.get(org.apache.struts2.StrutsStatics.HTTP_REQUEST);
-		HttpServletResponse response = (HttpServletResponse) ActionContext
+	    response = (HttpServletResponse) ActionContext
 				.getContext().get(
 						org.apache.struts2.StrutsStatics.HTTP_RESPONSE);
 		String packageNameString=request.getParameter("tcmc");
@@ -98,6 +95,8 @@ public class PackageAction extends ActionSupport {
 	public void packageDeleteTc() throws IOException {
 		request = (HttpServletRequest) ActionContext.getContext().get(
 				org.apache.struts2.StrutsStatics.HTTP_REQUEST);
+		response = (HttpServletResponse) ActionContext.getContext().get(
+				org.apache.struts2.StrutsStatics.HTTP_RESPONSE);
 		Integer pcId = Integer.parseInt(request.getParameter("id"));
 		String str = packageManager.deletePackage(pcId);
 		response.setHeader("content-type", "text/html;charset=utf-8");
@@ -108,6 +107,8 @@ public class PackageAction extends ActionSupport {
 	public void packageUpdate() throws IOException {
 		request = (HttpServletRequest) ActionContext.getContext().get(
 				org.apache.struts2.StrutsStatics.HTTP_REQUEST);
+		response = (HttpServletResponse) ActionContext.getContext().get(
+				org.apache.struts2.StrutsStatics.HTTP_RESPONSE);
 		Integer pcId = Integer.parseInt(request.getParameter("id"));
 		String priceString = request.getParameter("tcyj");
 		String currentPriceString = request.getParameter("tcxj");

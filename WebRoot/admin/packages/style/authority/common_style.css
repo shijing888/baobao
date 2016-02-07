@@ -88,6 +88,8 @@ a:hover {
 
 .ui_flt {
 	float: left;
+	font-size: 14px;
+	font-weight: 700;
 }
 
 .ui_frt {

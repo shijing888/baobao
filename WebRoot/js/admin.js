@@ -7,7 +7,7 @@ function showPackage() {
 	var tcContent = '<iframe id="listFrame" src="./admin/packages.html" frameborder="0" scrolling="no" width="100%" height="100%">';
 	$(".pageContent").html(tcContent);
 	$(".pageContent").css({
-		"width" : "900px",
+		"width" : "1000px",
 		"height":"600",
 		"scrollbar":"auto",
 		"float" : "left",
@@ -23,11 +23,17 @@ function packageAdd() {
 
 }
 
+//订单列表
+function orderList(){
+	var tcContent = '<iframe id="listFrame" src="./admin/order_list.html" frameborder="0" scrolling="no" width="100%" height="100%">';
+	$(".pageContent").html(tcContent);
+}
+
 //评论列表
 function commentList(val){
 	var tcContent = '<iframe src="./admin/showCommentList.html?val='+val+'" frameborder="0" scrolling="no" width="100%" height="100%"></iframe>';
 	$(".pageContent").css("height","800px");
-	$(".pageContent").css("width","900px");
+	$(".pageContent").css("width","1000px");
 	$(".pageContent").html(tcContent);
 	
 }

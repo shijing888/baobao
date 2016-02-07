@@ -25,9 +25,10 @@
 		<action name="commentDelete" class="commentAction" method="deleteComment"></action>
 		<action name="commentPass" class="commentAction" method="passComment"></action>
 		
-		<!-- order -->
-		<action name="submitOrder" class="orderAction" method="submitOrder"></action>
-		<action name="submitOrderValue" class="orderAction" method="submitOrderValue"></action>
+		<!-- order management -->
+		<action name="showOrderList" class="orderAction" method="getOrderList"></action>
+		<action name="searchOrder" class="orderAction" method="searchOrder"></action>
+		<action name="orderDelete" class="orderAction" method="orderDelete"></action>
 	</package>
 
 	<package name="baobao" extends="struts-default">

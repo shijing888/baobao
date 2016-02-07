@@ -78,6 +78,11 @@
 		$("#txtpassword").focus(function() {
 			$(".pwdTip").css("display", "none");
 		});
+		
+		$(this).keypress(function(e){
+		  if(e.which==13)
+		     userLogin();
+		});
 	});
 	function userLogin() {
 		var username = $("#txtusername").val();

@@ -147,9 +147,8 @@ function processObj(json) {
 		
 		$(".passButton").css("display","none");
 	}
-	calRecord(json);
-	calCount(json);
-
+	$("#rid").text(calRecord(json));
+	$("#cpid").text(calCount(json));
 }
 
 function deleterecord(obj, primary) {
@@ -162,9 +161,9 @@ function deleterecord(obj, primary) {
 			contable.deleteRow(rowIndex);
 			s_recordsize--;
 			document.getElementById("rid").innerText = s_recordsize;
-			alert("Record delete success!");
+			alert("该条记录已被成功删除！");
 		} else {
-			alert("Record delete failed!");
+			alert("删除失败！");
 		}
 	});
 

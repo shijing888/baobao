@@ -1,0 +1,157 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+a,img {
+	border: 0;
+}
+
+body {
+	font: 12px "ËÎÌו", "Arial Narrow", HELVETICA;
+	background: #fff;
+	-webkit-text-size-adjust: 100%;
+}
+
+a {
+	color: #2d374b;
+	text-decoration: none
+}
+
+a:hover {
+	color: #cd0200;
+	text-decoration: underline
+}
+
+/* searchTxt */
+.searchBtn button,.searchTxt .searchMenu .searchSelected {
+	background-image: url(images/searchbg.png);
+	background-repeat: no-repeat;
+}
+
+.searchTxt {
+	float: left;
+	width: 399px;
+	height: 30px;
+	border: 2px solid #d3d3d3;
+	border-right: 0;
+	position: relative;
+	z-index: 20;
+	background: #fff;
+}
+
+.searchTxt .radius {
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	background: #f4f4f4;
+	position: absolute;
+	top: -2px;
+	left: -2px;
+}
+
+.searchTxtHover {
+	float: left;
+	width: 399px;
+	height: 30px;
+	border: 2px solid #3297d8;
+	border-right: 0;
+	position: relative;
+	z-index: 20;
+	background: #fff;
+}
+
+.searchTxtHover .radius {
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	background: #cce5f5;
+	position: absolute;
+	top: -2px;
+	left: -2px;
+}
+
+.searchTxt .searchMenu {
+	float: left;
+}
+
+.searchTxt .searchMenu .searchSelected {
+	color: #a8a8a8;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 10px;
+	width: 58px;
+	background-position: 0px -54px;
+}
+
+.searchTxt .searchMenu .searchOpen {
+	background-position: 0px -104px;
+}
+
+.searchTxt .searchMenu .searchTab {
+	display: none;
+	position: absolute;
+	top: 30px;
+	left: -2px;
+	width: 58px;
+	border: 2px solid #3297d8;
+	border-top: 0;
+	background: #fff;
+	height: 58px;
+	z-index: 50;
+}
+
+.searchTxt .searchMenu .searchTab li {
+	width: 58px;
+	height: 28px;
+	line-height: 28px;
+	color: #a8a8a8;
+	font-size: 14px;
+	font-weight: bold;
+	text-indent: 10px;
+	cursor: pointer;
+}
+
+.searchTxt .searchMenu .searchTab li.selected {
+	background: #edf3fc;
+	color: #6994c1;
+}
+
+.searchTxt input {
+	float: left;
+	border: 0;
+	background: #fff;
+	color: #333;
+	font: 14px/22px 'ËÎÌו', verdana, tahoma, arial, 'SimSun', sans-serif;
+	width: 321px;
+	height: 22px;
+	margin: 0;
+	outline: medium none;
+	padding: 4px;
+}
+
+.searchTxt .sosoLogo {
+	float: right;
+	margin: 8px 6px 0 0;
+	display: inline;
+}
+
+.searchBtn {
+	float: left;
+}
+
+.searchBtn button {
+	background-position: 0px 0px;
+	background-color:#33a3dc;
+	border: 0;
+	color: #fff;
+	cursor: pointer;
+	float: left;
+	font-size: 16px;
+	height: 34px;
+	width: 86px;
+}

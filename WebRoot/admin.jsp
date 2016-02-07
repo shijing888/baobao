@@ -57,7 +57,7 @@
 		<![endif]-->
 </head>
 
-<body onload="showPackage();">
+<body onload="orderList();">
 	<div class="navbar navbar-default" id="navbar">
 		<script type="text/javascript">
 			try {
@@ -170,20 +170,8 @@
 					</a>
 
 						<ul class="submenu">
-							<li><a href="#"> <i class="icon-double-angle-right"></i>
+							<li><a href="#" onclick="orderList()"> <i class="icon-double-angle-right"></i>
 									订单列表
-							</a></li>
-
-							<li><a href="#"> <i class="icon-double-angle-right"></i>
-									待结算订单
-							</a></li>
-
-							<li><a href="#"> <i class="icon-double-angle-right"></i>
-									待发货订单
-							</a></li>
-
-							<li><a href="#"> <i class="icon-double-angle-right"></i>
-									待收货订单
 							</a></li>
 
 						</ul></li>
